@@ -732,6 +732,14 @@ h2 {
     display: grid;
   }
 
+  /* Las reglas de hover/focus de escritorio viven fuera de media queries y
+     tienen más especificidad, así que aquí hay que anular su `translate`:
+     al tocar el botón, el foco lo corría media anchura hacia la izquierda. */
+  .nav__item--dropdown:hover .dropdown,
+  .nav__item--dropdown:focus-within .dropdown {
+    transform: none;
+  }
+
   .nav__item--dropdown.is-open .nav__link svg {
     transform: rotate(180deg);
   }
