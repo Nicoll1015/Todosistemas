@@ -1,0 +1,16 @@
+# Configuración local del entorno de trabajo
+.claude/
+
+# Windows / macOS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Python (scripts de tools/)
+__pycache__/
+*.pyc
+
+# Editores
+.vscode/
+.idea/
+*.swp

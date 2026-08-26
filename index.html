@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Todosistemas STI · RiskTech — Digitaliza tus procesos, opera en control</title>
+<meta name="description" content="Automatizamos flujos documentales, financieros y de RRHH para empresas que necesitan operar con trazabilidad, eficiencia y cero fricciones. +22 años de experiencia en Latinoamérica." />
+<meta name="theme-color" content="#01091e" />
+
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="assets/img/favicon-64.png" sizes="64x64" type="image/png" />
+<link rel="apple-touch-icon" href="assets/img/favicon-256.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/styles.css" />
+
+<!-- El fondo del hero es LCP: se precarga para que pinte cuanto antes. -->
+<link rel="preload" as="image" href="assets/img/hero-bg-1600.avif" type="image/avif" media="(min-width: 901px)" />
+<link rel="preload" as="image" href="assets/img/hero-bg-900.avif" type="image/avif" media="(max-width: 900px)" />
+
+<meta property="og:title" content="Todosistemas STI · RiskTech" />
+<meta property="og:description" content="Tus procesos, digitalizados. Tu operación, en control." />
+<meta property="og:type" content="website" />
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<!-- ==========================================================================
+     HEADER
+     ========================================================================== -->
+<header class="header" id="site-header" data-header>
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="Todosistemas STI — Inicio">
+      <img class="brand__logo" src="assets/img/logo-horizontal.webp" alt="Todosistemas STI" width="230" height="33" loading="eager" />
+    </a>
+
+    <nav class="nav" id="site-nav" data-nav>
+      <ul class="nav__list">
+        <li class="nav__item nav__item--dropdown" data-dropdown>
+          <button class="nav__link" type="button" aria-expanded="false" data-dropdown-toggle>
+            Soluciones
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="dropdown" role="menu">
+            <a class="dropdown__link" href="soluciones.html#gestion-documental" role="menuitem">
+              <span class="dropdown__icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.8"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8"/></svg>
+              </span>
+              <span>
+                <span class="dropdown__title">Gestión documental</span>
+                <span class="dropdown__desc">DocuClick · SGDEA</span>
+              </span>
+            </a>
+            <a class="dropdown__link" href="soluciones.html#automatizacion-bpm" role="menuitem">
+              <span class="dropdown__icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+              <span>
+                <span class="dropdown__title">Automatización BPM</span>
+                <span class="dropdown__desc">Automatización de procesos</span>
+              </span>
+            </a>
+            <a class="dropdown__link" href="soluciones.html#rrhh" role="menuitem">
+              <span class="dropdown__icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.8"/></svg>
+              </span>
+              <span>
+                <span class="dropdown__title">RRHH</span>
+                <span class="dropdown__desc">Gestión de RRHH · Digital</span>
+              </span>
+            </a>
+            <a class="dropdown__link" href="soluciones.html#fabrica-software" role="menuitem">
+              <span class="dropdown__icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>
+                <span class="dropdown__title">Fábrica de software</span>
+                <span class="dropdown__desc">Desarrollo a la medida</span>
+              </span>
+            </a>
+            <a class="dropdown__link" href="soluciones.html#outsourcing-ti" role="menuitem">
+              <span class="dropdown__icon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21a8 8 0 10-16 0" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M2 12h4M18 12h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+              <span>
+                <span class="dropdown__title">Outsourcing TI</span>
+                <span class="dropdown__desc">Talento especializado · Staffing</span>
+              </span>
+            </a>
+          </div>
+        </li>
+        <li class="nav__item"><a class="nav__link" href="tecnologia.html">Tecnología</a></li>
+        <li class="nav__item"><a class="nav__link" href="casos-de-exito.html">Casos de éxito</a></li>
+        <li class="nav__item"><a class="nav__link" href="nosotros.html">Nosotros</a></li>
+        <li class="nav__item"><a class="nav__link" href="blog.html">Blog</a></li>
+      </ul>
+
+      <div class="header__cta">
+        <a href="#contacto" class="btn btn--primary btn--block">
+          Agendar una demo
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </nav>
+
+    <div class="header__actions">
+      <a href="#contacto" class="btn btn--primary header__cta-desktop">
+        Agendar una demo
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ==========================================================================
+       HERO
+       ========================================================================== -->
+  <section class="hero pattern-triangles" aria-labelledby="hero-title">
+    <div class="container hero__inner">
+      <div class="hero__stat hero__stat--sector">
+        <strong>Sector</strong>
+        <span>público y privado</span>
+      </div>
+      <div class="hero__stat hero__stat--years">
+        <strong>+22 años</strong>
+        <span>en el mercado</span>
+      </div>
+      <div class="hero__stat hero__stat--teams">
+        <strong>+5.000</strong>
+        <span>equipos implementados</span>
+      </div>
+
+      <div class="hero__content" data-reveal>
+        <h1 class="hero__title" id="hero-title">
+          Tus procesos, digitalizados.<br />
+          Tu operación, <span class="accent">en control.</span>
+        </h1>
+        <p class="hero__lead">
+          <strong>Automatizamos flujos documentales, financieros y de RRHH</strong> para empresas que necesitan operar con trazabilidad, eficiencia y cero fricciones.
+        </p>
+        <div class="hero__actions">
+          <a href="#contacto" class="btn btn--primary">
+            Agendar una demo
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="soluciones.html" class="btn btn--ghost">Ver soluciones</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__curve" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 90V40C240 90 480 90 720 60C960 30 1200 0 1440 40V90H0Z" fill="#ffffff"/></svg>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SERVICIOS — "Lo que hacemos, bien hecho."
+       ========================================================================== -->
+  <section class="section services" id="soluciones" aria-labelledby="services-title">
+    <!-- Líneas decorativas de la esquina superior izquierda -->
+    <svg class="services__lines" viewBox="0 0 520 460" fill="none" aria-hidden="true">
+      <g stroke="#03cf88" stroke-opacity="0.35" fill="none">
+        <path d="M-60 460C-60 220 120 30 400 -20" />
+        <path d="M-60 440C-60 212 108 22 380 -26" />
+        <path d="M-60 420C-60 204 96 14 360 -32" />
+        <path d="M-60 400C-60 196 84 6 340 -38" />
+        <path d="M-60 380C-60 188 72 -2 320 -44" />
+        <path d="M-60 360C-60 180 60 -10 300 -50" />
+        <path d="M-60 340C-60 172 48 -18 280 -56" />
+        <path d="M-60 320C-60 164 36 -26 260 -62" />
+        <path d="M-60 300C-60 156 24 -34 240 -68" />
+        <path d="M-60 280C-60 148 12 -42 220 -74" />
+        <path d="M-60 260C-60 140 0 -50 200 -80" />
+        <path d="M-60 240C-60 132 -12 -58 180 -86" />
+      </g>
+    </svg>
+
+    <div class="container">
+      <div class="services__grid">
+        <div class="services__intro" data-reveal>
+          <h2 id="services-title">Lo que hacemos,<br /><span class="accent">bien hecho.</span></h2>
+          <p class="text-lead">Soluciones digitales para las áreas que más impactan tu operación.</p>
+        </div>
+
+        <article class="service-card" data-reveal>
+          <div class="service-card__body">
+            <h3 class="service-card__title">Gestión documental</h3>
+            <span class="service-card__kicker">DocuClick · SGDEA</span>
+            <p class="service-card__desc">Centraliza, controla y consulta tus documentos en una sola plataforma.</p>
+          </div>
+        </article>
+
+        <article class="service-card" data-reveal>
+          <div class="service-card__body">
+            <h3 class="service-card__title">Automatización BPM</h3>
+            <span class="service-card__kicker">Automatización de procesos · BPM</span>
+            <p class="service-card__desc">Digitaliza flujos de trabajo y mejora la eficiencia operativa.</p>
+          </div>
+        </article>
+
+        <article class="service-card" data-reveal>
+          <div class="service-card__body">
+            <h3 class="service-card__title">RRHH</h3>
+            <span class="service-card__kicker">Gestión de RRHH · Digital</span>
+            <p class="service-card__desc">Administra el ciclo de vida del colaborador de forma simple y trazable.</p>
+          </div>
+        </article>
+
+        <article class="service-card service-card--dark" data-reveal>
+          <div class="service-card__body">
+            <h3 class="service-card__title">Fábrica de software</h3>
+            <span class="service-card__kicker">Fábrica de software ·<br />A la medida</span>
+            <p class="service-card__desc">Desarrollamos soluciones digitales adaptadas a las necesidades de tu negocio.</p>
+          </div>
+        </article>
+
+        <article class="service-card" data-reveal>
+          <div class="service-card__body">
+            <h3 class="service-card__title">Outsourcing TI</h3>
+            <span class="service-card__kicker">Outsourcing de TI · Staffing</span>
+            <p class="service-card__desc">Talento tecnológico especializado con integración rápida y respaldo continuo.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       IMPLEMENTAMOS. NO SOLO PROMETEMOS.
+       ========================================================================== -->
+  <section class="section implementation" aria-labelledby="impl-title">
+    <!-- Abanico decorativo de la esquina inferior derecha -->
+    <svg class="implementation__lines" viewBox="0 0 300 340" fill="none" aria-hidden="true">
+      <g stroke="#03cf88" stroke-opacity="0.3" fill="none">
+        <path d="M300 -40C120 60 30 190 -10 380" />
+        <path d="M300 -14C126 82 40 204 4 380" />
+        <path d="M300 12C132 104 50 218 18 380" />
+        <path d="M300 38C138 126 60 232 32 380" />
+        <path d="M300 64C144 148 70 246 46 380" />
+        <path d="M300 90C150 170 80 260 60 380" />
+        <path d="M300 116C156 192 90 274 74 380" />
+        <path d="M300 142C162 214 100 288 88 380" />
+        <path d="M300 168C168 236 110 302 102 380" />
+        <path d="M300 194C174 258 120 316 116 380" />
+      </g>
+    </svg>
+
+    <div class="container">
+      <div class="implementation__head">
+        <h2 id="impl-title" data-reveal><span class="accent">Implementamos.</span><br />No solo prometemos.</h2>
+        <p class="text-lead" data-reveal>Más de 20 años ayudando a organizaciones públicas y privadas en Latinoamérica a optimizar su operación mediante tecnología, metodología y acompañamiento especializado.</p>
+      </div>
+
+      <div class="stack" data-reveal>
+        <!-- Rombos apilados: vector puro, sin filtros, para que queden nítidos -->
+        <svg class="stack__shapes" viewBox="0 0 400 500" fill="none" aria-hidden="true"
+             shape-rendering="geometricPrecision">
+          <defs>
+            <linearGradient id="stackBottom" x1="70" y1="270" x2="330" y2="450" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#009a6d" />
+              <stop offset="1" stop-color="#00bd82" />
+            </linearGradient>
+            <linearGradient id="stackMiddle" x1="70" y1="160" x2="330" y2="340" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#6fc7a6" />
+              <stop offset="1" stop-color="#a9e2c9" />
+            </linearGradient>
+            <linearGradient id="stackTop" x1="330" y1="30" x2="70" y2="240" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1fd992" />
+              <stop offset="1" stop-color="#c8f5df" />
+            </linearGradient>
+          </defs>
+
+          <rect x="-100" y="-100" width="200" height="200" rx="30" fill="url(#stackBottom)"
+                transform="translate(195 359) scale(1.379 0.884) rotate(45)" />
+          <rect x="-100" y="-100" width="200" height="200" rx="30" fill="url(#stackMiddle)"
+                transform="translate(195 247) scale(1.379 0.884) rotate(45)" />
+          <rect x="-100" y="-100" width="200" height="200" rx="30" fill="url(#stackTop)"
+                transform="translate(195 135) scale(1.379 0.884) rotate(45)" />
+        </svg>
+
+        <ul class="stack__items">
+          <li class="stack__item is-active" tabindex="0" data-stack-item>
+            <svg class="stack__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.7"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="stack__text">
+              <strong>Tecnología certificada</strong>
+              <span>AuraQuantic BPMS, integrable con IA y RPA</span>
+            </div>
+          </li>
+
+          <li class="stack__item" tabindex="0" data-stack-item>
+            <svg class="stack__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 17l-2.5 2.5a2 2 0 01-2.8-2.8l6-6a2 2 0 012.8 0l3.5 3.5a2 2 0 010 2.8l-1 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9l4-4 5 2 5-2 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="stack__text">
+              <strong>Implementación real</strong>
+              <span>No solo licencias. Acompañamos de principio a fin.</span>
+            </div>
+          </li>
+
+          <li class="stack__item" tabindex="0" data-stack-item>
+            <svg class="stack__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.7"/></svg>
+            <div class="stack__text">
+              <strong>Equipo especializado</strong>
+              <span>+70 profesionales con experiencia sectorial.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EMPRESAS QUE YA OPERAN MEJOR
+       ========================================================================== -->
+  <section class="section testimonials pattern-triangles" aria-labelledby="testimonials-title">
+    <div class="container">
+      <div class="testimonials__head">
+        <h2 id="testimonials-title" data-reveal>Empresas que ya<br /><span class="accent">operan mejor.</span></h2>
+        <p class="text-on-dark" data-reveal>Las principales entidades de todos los sectores han optimizado su gestión de riesgos y detección de fraudes gracias a nuestras soluciones basadas en IA y Machine Learning. Descubre lo que podemos lograr juntos.</p>
+      </div>
+
+      <div class="clients" data-reveal aria-label="Empresas que confían en nosotros">
+        <img class="clients__logo clients__logo--fogafin" src="assets/img/clientes/fogafin.webp" alt="Fogafín" loading="lazy" decoding="async" />
+        <img class="clients__logo clients__logo--equidad" src="assets/img/clientes/equidad.webp" alt="Equidad Seguros" loading="lazy" decoding="async" />
+        <img class="clients__logo clients__logo--inchcape" src="assets/img/clientes/inchcape.webp" alt="Inchcape" loading="lazy" decoding="async" />
+        <img class="clients__logo clients__logo--joli" src="assets/img/clientes/joli.webp" alt="Joli" loading="lazy" decoding="async" />
+        <img class="clients__logo clients__logo--savvylink" src="assets/img/clientes/savvylink.webp" alt="Savvy Link" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="testimonial-grid">
+        <figure class="testimonial-card" data-reveal>
+          <div class="testimonial-card__bubble">
+            <svg class="testimonial-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V13.6C0 5.4 5.2 0 12.4 0v6.4c-3.6 0-6 2.6-6 6.4H12v11.2H0zM19.6 24V13.6c0-8.2 5.2-13.6 12.4-13.6v6.4c-3.6 0-6 2.6-6 6.4h5.6v11.2H19.6z"/></svg>
+            <blockquote class="testimonial-card__text">"Valoramos mucho la cercanía del equipo y su capacidad de responder rápido."</blockquote>
+          </div>
+          <figcaption class="testimonial-card__author">
+            <span class="testimonial-card__avatar" aria-hidden="true"></span>
+            <span class="testimonial-card__person">
+              <strong>Luisa Peña</strong>
+              <span>Administradora</span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card" data-reveal>
+          <div class="testimonial-card__bubble">
+            <svg class="testimonial-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V13.6C0 5.4 5.2 0 12.4 0v6.4c-3.6 0-6 2.6-6 6.4H12v11.2H0zM19.6 24V13.6c0-8.2 5.2-13.6 12.4-13.6v6.4c-3.6 0-6 2.6-6 6.4h5.6v11.2H19.6z"/></svg>
+            <blockquote class="testimonial-card__text">"Desde que trabajamos con RiskTech, el proceso se volvió mucho más claro. Hoy tenemos control real sobre lo que antes era difícil de ver."</blockquote>
+          </div>
+          <figcaption class="testimonial-card__author">
+            <span class="testimonial-card__avatar" aria-hidden="true"></span>
+            <span class="testimonial-card__person">
+              <strong>Mario Ordoñez</strong>
+              <span>Contador</span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial-card" data-reveal>
+          <div class="testimonial-card__bubble">
+            <svg class="testimonial-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V13.6C0 5.4 5.2 0 12.4 0v6.4c-3.6 0-6 2.6-6 6.4H12v11.2H0zM19.6 24V13.6c0-8.2 5.2-13.6 12.4-13.6v6.4c-3.6 0-6 2.6-6 6.4h5.6v11.2H19.6z"/></svg>
+            <blockquote class="testimonial-card__text">"Fue una decisión acertada. Desde el inicio vimos mejoras en la forma de gestionar el riesgo."</blockquote>
+          </div>
+          <figcaption class="testimonial-card__author">
+            <span class="testimonial-card__avatar" aria-hidden="true"></span>
+            <span class="testimonial-card__person">
+              <strong>Manuel Lopez</strong>
+              <span>Gerente de riesgo</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PRODUCTO — DocuClick
+       ========================================================================== -->
+  <section class="section product" aria-labelledby="product-title">
+    <div class="container">
+      <div class="product__head">
+        <h2 id="product-title" data-reveal><span class="accent">DocuClick:</span><br />el archivo electrónico que<br />tu empresa ya <span class="accent">necesitaba.</span></h2>
+        <div class="product__intro" data-reveal>
+          <p class="text-lead">Un SGDEA completo para gestionar, aprobar, firmar y archivar documentos con trazabilidad total. Integra flujos de trabajo, auditoría automática y dashboards en tiempo real.</p>
+          <div class="product__actions">
+            <a href="#contacto" class="btn btn--primary">Agendar una demo <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="soluciones.html#gestion-documental" class="btn btn--ghost">Ver soluciones</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="docu" data-reveal>
+        <!-- Arco y conectores punteados -->
+        <svg class="docu__arc" viewBox="0 0 1167 480" fill="none" aria-hidden="true" preserveAspectRatio="none">
+          <!-- Arco principal -->
+          <!-- Centrado en x=597.5, el mismo eje de la ilustración -->
+          <path d="M298 400 A 300 300 0 0 1 897 400" stroke="#03cf88" stroke-opacity="0.2" stroke-width="1.5" />
+          <!-- Conectores punteados desde cada icono hacia el centro -->
+          <g stroke="#03cf88" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="6 8">
+            <path d="M395 55 L500 130" />
+            <path d="M245 180 L430 235" />
+            <path d="M238 300 L420 320" />
+            <path d="M785 56 L690 130" />
+            <path d="M950 181 L765 235" />
+            <path d="M963 301 L775 320" />
+          </g>
+          <g fill="#03cf88" fill-opacity="0.8">
+            <circle cx="500" cy="130" r="4" /><circle cx="430" cy="235" r="4" />
+            <circle cx="420" cy="320" r="4" /><circle cx="690" cy="130" r="4" />
+            <circle cx="765" cy="235" r="4" /><circle cx="775" cy="320" r="4" />
+          </g>
+        </svg>
+
+        <!-- Ilustración central -->
+        <div class="docu__stage" aria-hidden="true">
+          <span class="docu__glow"></span>
+          <svg class="docu__art" viewBox="0 0 300 260" fill="none">
+            <defs>
+              <linearGradient id="docFace" x1="60" y1="40" x2="240" y2="200" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#0bf59b" />
+                <stop offset="1" stop-color="#06a76c" />
+              </linearGradient>
+            </defs>
+            <!-- base isométrica -->
+            <path d="M150 196 L268 232 L150 254 L32 232 Z" fill="#052c22" stroke="#0bf59b" stroke-width="2" />
+            <path d="M32 216 L150 180 L268 216 L268 232 L150 254 L32 232 Z" fill="#04231c" stroke="#0bf59b" stroke-width="2" stroke-linejoin="round" />
+            <!-- hojas detrás -->
+            <path d="M108 46 h74 l26 26 v96 h-100 z" fill="#04231c" stroke="#0bf59b" stroke-width="2" stroke-linejoin="round" opacity="0.75" />
+            <path d="M96 62 h74 l26 26 v96 h-100 z" fill="#052c22" stroke="#0bf59b" stroke-width="2" stroke-linejoin="round" />
+            <path d="M112 92 h56 M112 110 h56 M112 128 h34" stroke="#0bf59b" stroke-width="2.4" stroke-linecap="round" opacity="0.85" />
+            <!-- carpeta frontal -->
+            <path d="M84 108 h44 l12 14 h72 a8 8 0 018 8 v56 a8 8 0 01-8 8 H84 a8 8 0 01-8-8 v-70 a8 8 0 018-8 z" fill="url(#docFace)" />
+            <circle cx="150" cy="166" r="26" fill="#04231c" stroke="#0bf59b" stroke-width="2.5" />
+            <path d="M139 166 l8 8 l16 -17" stroke="#0bf59b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <ul class="docu__items">
+          <li class="docu__item docu__item--l1"><span class="docu__text">Gestión y archivo<br />electrónico de documentos</span><span class="docu__badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V7z" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v4M10 13h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></li>
+          <li class="docu__item docu__item--l2"><span class="docu__text">Flujos de aprobación<br />y firma digital</span><span class="docu__badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2v-8" stroke="currentColor" stroke-width="1.6"/><path d="M17.5 3.5a2.1 2.1 0 013 3L14 13l-4 1 1-4 6.5-6.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span></li>
+          <li class="docu__item docu__item--l3"><span class="docu__text">Trazabilidad y<br />auditoría automática</span><span class="docu__badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-3 7.4-7 8.5-4-1.1-7-4.2-7-8.5V6l7-3z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+          <li class="docu__item docu__item--r1 is-highlight"><span class="docu__badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M6 19a6 6 0 0112 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4 12a2.5 2.5 0 010-5M20 12a2.5 2.5 0 000-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="docu__text">Trabajo colaborativo<br />entre áreas</span></li>
+          <li class="docu__item docu__item--r2"><span class="docu__badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V9M10 20V5M16 20v-7M20 20H4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="docu__text">Dashboard de<br />control operativo</span></li>
+          <li class="docu__item docu__item--r3"><span class="docu__badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M12 5v3M8.5 13h.01M15.5 13h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M2 13h2M20 13h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="docu__text">Integrable con IA<br />y RPA</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       BLOG — Perspectivas
+       ========================================================================== -->
+  <section class="section blog" id="blog" aria-labelledby="blog-title">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <h2 id="blog-title" data-reveal><span class="accent">Perspectivas</span> para decisores de operación.</h2>
+        <p class="text-lead" data-reveal>Contenido técnico y estratégico sobre automatización, gestión documental y transformación digital en empresas reales.</p>
+      </div>
+
+      <div class="blog__grid">
+        <article class="blog-card" data-reveal>
+          <a class="blog-card__media" href="blog.html" aria-label="Leer artículo: Matrices en Excel vs. Sistemas de administración de riesgos (SAR)">
+            <span class="blog-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+          <div class="blog-card__body">
+            <span class="blog-card__meta">Gestión de riesgos</span>
+            <h3 class="blog-card__title"><a href="blog.html">Matrices en Excel vs. Sistemas de administración de riesgos (SAR)</a></h3>
+            <p class="blog-card__desc">La colaboración puede hacer más fuertes a nuestros equipos y mejorar nuestros diseños individuales.</p>
+          </div>
+        </article>
+
+        <article class="blog-card" data-reveal>
+          <a class="blog-card__media" href="blog.html" aria-label="Leer artículo: Matrices en Excel vs. Sistemas de administración de riesgos (SAR)">
+            <span class="blog-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+          <div class="blog-card__body">
+            <span class="blog-card__meta">Gestión documental</span>
+            <h3 class="blog-card__title"><a href="blog.html">Matrices en Excel vs. Sistemas de administración de riesgos (SAR)</a></h3>
+            <p class="blog-card__desc">La colaboración puede hacer más fuertes a nuestros equipos y mejorar nuestros diseños individuales.</p>
+          </div>
+        </article>
+
+        <article class="blog-card" data-reveal>
+          <a class="blog-card__media" href="blog.html" aria-label="Leer artículo: Matrices en Excel vs. Sistemas de administración de riesgos (SAR)">
+            <span class="blog-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+          <div class="blog-card__body">
+            <span class="blog-card__meta">Transformación digital</span>
+            <h3 class="blog-card__title"><a href="blog.html">Matrices en Excel vs. Sistemas de administración de riesgos (SAR)</a></h3>
+            <p class="blog-card__desc">La colaboración puede hacer más fuertes a nuestros equipos y mejorar nuestros diseños individuales.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="blog__footer">
+        <a href="blog.html" class="btn btn--ghost">
+          Ver todos los artículos
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CTA BANNER
+       ========================================================================== -->
+  <div class="cta-banner-wrap">
+    <div class="container">
+      <div class="cta-banner" data-reveal>
+        <div class="cta-banner__content">
+          <h2>¿Listo para <span class="accent">digitalizar</span> tu operación?</h2>
+          <p>Cuéntanos qué necesitas y te mostramos cómo lo resolvemos. <strong>Sin rodeos.</strong></p>
+          <div class="cta-banner__actions">
+            <a href="#contacto" class="btn btn--primary">
+              Agenda una demo
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://wa.me/573173653316" class="btn btn--outline-light" target="_blank" rel="noopener">Hablemos por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer__top">
+      <h2>¿Buscas asesoramiento <span class="accent">integral</span>?</h2>
+      <div class="footer__top-copy">
+        <p>Hablemos ahora y descubre cómo podemos ser tu socio estratégico.</p>
+        <a href="mailto:Contacto@risktech.com.co" class="btn btn--primary">
+          Agendar una demo
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="brand" aria-label="Todosistemas STI — Inicio">
+          <img class="brand__logo brand__logo--footer" src="assets/img/logo-horizontal.webp" alt="Todosistemas STI" width="260" height="38" loading="lazy" />
+        </a>
+        <p>Somos una empresa colombiana de consultoría y asesoría en Sistemas de TI conformada por un grupo de profesionales dinámicos y emprendedores que han hecho acopio de la experiencia adquirida durante más de 22 años en investigación, desarrollo y gestión de soluciones de tecnologías de la información.</p>
+      </div>
+
+      <nav aria-label="Soluciones">
+        <h3 class="footer__heading">Soluciones</h3>
+        <ul class="footer__list">
+          <li><a href="soluciones.html#gestion-documental">Gestión documental</a></li>
+          <li><a href="soluciones.html#automatizacion-bpm">Automatización BPM</a></li>
+          <li><a href="soluciones.html#rrhh">RRHH</a></li>
+          <li><a href="soluciones.html#fabrica-software">Fábrica de software</a></li>
+          <li><a href="soluciones.html#outsourcing-ti">Outsourcing TI</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Menú">
+        <h3 class="footer__heading">Menú</h3>
+        <ul class="footer__list">
+          <li><a href="tecnologia.html">Tecnología</a></li>
+          <li><a href="casos-de-exito.html">Casos de éxito</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h3 class="footer__heading">Contacto</h3>
+        <a class="footer__contact-item" href="tel:+573173653316">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.6"/></svg>
+          (+57) 317 365 3316
+        </a>
+        <a class="footer__contact-item" href="mailto:Contacto@risktech.com.co">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.6"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.6"/></svg>
+          Contacto@risktech.com.co
+        </a>
+
+        <div class="footer__socials">
+          <a class="footer__social-link" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3a4 4 0 00-4 4v2H8v3h2v6h3v-6h3l1-3h-4v-2a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="footer__social-link" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a class="footer__social-link" href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2.5 2.5 0 015 0V17M11 12v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+
+        <div class="footer__badges" aria-label="Certificaciones">
+          <span class="footer__badge" title="IQNET">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="footer__badge" title="Icontec ISO/IEC 27001">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Todosistemas STI. Todos los derechos reservados.</span>
+      <span><a href="#">Política de privacidad</a> · <a href="#">Términos y condiciones</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-fab" href="https://wa.me/573173653316" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.11-1.53a9.87 9.87 0 004.93 1.33c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.06c-1.63 0-3.15-.47-4.44-1.28l-.32-.19-3.03.9.9-2.95-.2-.34a7.94 7.94 0 01-1.28-4.29c0-4.42 3.6-8.02 8.02-8.02 4.42 0 8.02 3.6 8.02 8.02 0 4.42-3.6 8.15-7.67 8.15zm4.36-5.98c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.63-1.18-1.4-1.32-1.64-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
