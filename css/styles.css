@@ -1648,7 +1648,7 @@ h2 {
 }
 
 .clients__logo {
-  height: 52px;
+  height: 62px;
   width: auto;
   object-fit: contain;
   opacity: 0.75;
@@ -1657,6 +1657,30 @@ h2 {
 }
 
 .clients__logo:hover {
+  opacity: 1;
+}
+
+/* Este logo tiene demasiado detalle fino para quedar en blanco sólido (se
+   perdía todo el interior del escudo), así que se deja a color con una
+   tarjeta blanca detrás para que tenga contraste sobre el fondo oscuro. */
+.clients__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity var(--transition-base);
+}
+
+.clients__badge:hover {
+  opacity: 1;
+}
+
+.clients__badge .clients__logo {
+  height: 50px;
   opacity: 1;
 }
 
@@ -1671,7 +1695,11 @@ h2 {
 
 @media (max-width: 560px) {
   .clients__logo {
-    height: 40px;
+    height: 48px;
+  }
+
+  .clients__badge .clients__logo {
+    height: 38px;
   }
 }
 
