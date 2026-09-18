@@ -26,13 +26,15 @@
 
   /* Tipografía */
   --font-base: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --fs-h1: clamp(2rem, 1.4rem + 2.2vw, 3.1rem);
-  --fs-h2: clamp(1.5rem, 1.2rem + 1vw, 1.95rem);
-  --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-  --fs-lead: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  /* Tamaños subidos para que en escritorio se acerquen a los de
+     risktech.com.co (H1 ~70px, H2 ~40px, H3 ~28px, texto lead ~20px). */
+  --fs-h1: clamp(2.2rem, 1.3rem + 4vw, 4.4rem);
+  --fs-h2: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+  --fs-h3: clamp(1.3rem, 1.15rem + 0.7vw, 1.75rem);
+  --fs-lead: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
   --fs-body: 1rem;
   --fs-small: 0.875rem;
-  --fs-xs: 0.75rem;
+  --fs-xs: 0.95rem;
 
   /* Espaciado */
   --space-xxs: 0.25rem;
@@ -101,7 +103,8 @@ body {
   background: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  /* `overflow-x` en `body` rompe `position: sticky` del header (crea su
+     propio contexto de scroll). El recorte horizontal ya lo hace `html`. */
 }
 
 img,
@@ -556,6 +559,18 @@ h2 {
   z-index: 20;
 }
 
+/* Puente invisible sobre el espacio entre el botón y el panel: sin esto, al
+   mover el mouse en línea recta hacia abajo se pierde el :hover justo antes
+   de llegar al dropdown y el menú se cierra antes de poder hacer clic. */
+.dropdown::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
 .nav__item--dropdown:hover .dropdown,
 .nav__item--dropdown:focus-within .dropdown {
   opacity: 1;
@@ -615,6 +630,114 @@ h2 {
   line-height: 1.3;
   color: var(--color-ink-soft);
   margin-top: 2px;
+}
+
+/* Submenú anidado dentro del dropdown "Servicios TI" (Outsourcing de TI /
+   Transformación digital, cada uno con su propia lista de enlaces) */
+.dropdown--nested {
+  min-width: 260px;
+}
+
+.dropdown__group {
+  position: relative;
+}
+
+.dropdown__parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+/* Categorías de nivel 3+ (ej. "Automatización autónoma" dentro de
+   "Transformación digital"): mismo trato que un enlace normal, sin negrita,
+   para diferenciarlas de las categorías de nivel superior. */
+.dropdown__submenu .dropdown__parent {
+  font-weight: 400;
+}
+
+.dropdown__parent svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--color-ink-soft);
+  transition: color var(--transition-fast);
+}
+
+/* `>` (hijo directo) y no descendiente general: si no, al pasar el mouse
+   por "Transformación digital" también se resaltaría/abriría el grupo
+   anidado "Automatización autónoma" que vive dentro de su panel, sin
+   necesidad de pasar el mouse por encima de esa fila. */
+.dropdown__group:hover > .dropdown__parent,
+.dropdown__group:focus-within > .dropdown__parent {
+  background: var(--color-navy-950);
+  color: var(--color-green-500);
+}
+
+.dropdown__group:hover > .dropdown__parent svg,
+.dropdown__group:focus-within > .dropdown__parent svg {
+  color: var(--color-green-500);
+}
+
+.dropdown__submenu {
+  position: absolute;
+  top: -0.6rem;
+  left: calc(100% + 10px);
+  min-width: 260px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.6rem;
+  display: grid;
+  gap: 0.15rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+  z-index: 21;
+}
+
+/* Puente invisible sobre el hueco horizontal entre la fila y el submenú
+   (mismo problema/solución que el puente vertical del dropdown de nivel 1). */
+.dropdown__submenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 10px;
+  height: 100%;
+}
+
+.dropdown__group:hover > .dropdown__submenu,
+.dropdown__group:focus-within > .dropdown__submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dropdown__sublink {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  font-size: 0.85rem;
+  transition: background var(--transition-fast);
+}
+
+.dropdown__sublink:hover {
+  background: var(--color-off-white);
 }
 
 .header__cta {
@@ -756,6 +879,60 @@ h2 {
     background: rgba(255, 255, 255, 0.06);
   }
 
+  /* Submenú anidado: en escritorio se abre en flyout al pasar el mouse; en
+     móvil no hay hover, así que se convierte en acordeón con clic (JS
+     agrega/quita `.is-open` en el `.dropdown__group`, igual que ya hace con
+     `.nav__item--dropdown.is-open`). */
+  .dropdown__parent {
+    color: var(--color-white);
+  }
+
+  .dropdown__group:hover > .dropdown__parent,
+  .dropdown__group:focus-within > .dropdown__parent {
+    background: none;
+    color: var(--color-white);
+  }
+
+  .dropdown__group:hover > .dropdown__parent svg,
+  .dropdown__group:focus-within > .dropdown__parent svg {
+    color: var(--color-ink-soft);
+  }
+
+  .dropdown__group.is-open > .dropdown__parent {
+    color: var(--color-green-500);
+  }
+
+  .dropdown__group.is-open > .dropdown__parent svg {
+    color: var(--color-green-500);
+    transform: rotate(90deg);
+  }
+
+  .dropdown__submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    display: none;
+    box-shadow: none;
+    background: none;
+    min-width: 0;
+    margin: 0.2rem 0 0.4rem 0.75rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--color-border-dark);
+  }
+
+  .dropdown__group.is-open > .dropdown__submenu {
+    display: grid;
+  }
+
+  .dropdown__sublink {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .dropdown__sublink:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
   .header__cta {
     display: block;
     margin-top: var(--space-lg);
@@ -800,7 +977,9 @@ h2 {
 }
 
 .hero__title {
-  font-size: var(--fs-h1);
+  /* Este título del hero del home se queda en su tamaño original; el resto
+     de los h1 del sitio (`--fs-h1`) sí se subieron. */
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3.1rem);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -845,29 +1024,21 @@ h2 {
 }
 
 .hero__stat strong {
-  font-size: 1.3rem;
+  font-size: 1.85rem;
   font-weight: 700;
   color: var(--color-white);
 }
 
 .hero__stat span {
-  font-size: 0.75rem;
+  font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.65);
 }
 
 /* Posiciones tomadas del mockup */
 .hero__stat--sector {
-  left: 7%;
+  left: 2%;
   top: 14%;
   animation-delay: 0s;
-}
-
-.hero__stat--sector strong {
-  font-size: 1.7rem;
-}
-
-.hero__stat--sector span {
-  font-size: 0.85rem;
 }
 
 .hero__stat--years {
@@ -890,6 +1061,16 @@ h2 {
   50% {
     transform: translateY(-10px);
   }
+}
+
+.hero__clients {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-lg) 0 clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.hero__clients .clients-marquee {
+  margin-bottom: 0;
 }
 
 .hero__curve {
@@ -929,7 +1110,8 @@ h2 {
   }
 }
 /* ==========================================================================
-   "Lo que hacemos, bien hecho." — Grid de soluciones
+   Grillas de tarjetas de servicio (Outsourcing, Transformación digital,
+   índice de Soluciones)
    ========================================================================== */
 
 .services {
@@ -949,8 +1131,26 @@ h2 {
   pointer-events: none;
 }
 
-/* Grilla de 3 columnas: el texto ocupa la primera celda de la fila 1.
-   El ancho es más estrecho que el contenedor global, como en el mockup. */
+/* Encabezado centrado, arriba de la grilla de tarjetas (no forma parte de
+   la grilla): así todas las tarjetas quedan parejas, sin que el texto de
+   intro ocupe una celda y desalinee la última fila. */
+.services__intro {
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.services__intro h2 {
+  font-size: var(--fs-h2);
+  color: var(--color-ink);
+}
+
+.services__intro .text-lead {
+  margin-top: var(--space-md);
+  margin-inline: auto;
+}
+
+/* Grilla de 3 columnas para las tarjetas, pareja en cada fila. */
 .services__grid {
   position: relative;
   z-index: 1;
@@ -961,22 +1161,6 @@ h2 {
   margin-inline: auto;
 }
 
-.services__intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-right: var(--space-md);
-}
-
-.services__intro h2 {
-  font-size: var(--fs-h2);
-  color: var(--color-ink);
-}
-
-.services__intro .text-lead {
-  margin-top: var(--space-md);
-}
-
 .service-card {
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -985,21 +1169,62 @@ h2 {
   min-height: 360px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   box-shadow: 0 2px 10px rgba(4, 12, 34, 0.06);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), border-color var(--transition-base);
 }
 
-.service-card:hover {
+/* Mismo tratamiento (blanca) para todas las tarjetas; al tocar/pasar el
+   mouse se resaltan en verde en vez de alternar tarjetas oscuras.
+   El :hover queda detrás de (hover: hover) porque en pantallas táctiles
+   un ancestro con :hover hace que el primer toque solo dispare el hover
+   y haga falta un segundo toque para el click real (bug clásico de
+   Safari/iOS) — con esto el primer toque ya abre/navega directo. */
+@media (hover: hover) {
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-green-500);
+    background: rgba(3, 207, 136, 0.07);
+  }
+}
+
+.service-card:focus-visible,
+.service-card:active {
   transform: translateY(-6px);
   box-shadow: var(--shadow-md);
+  border-color: var(--color-green-500);
+  background: rgba(3, 207, 136, 0.07);
 }
 
-.service-card--dark {
-  /* Navy profundo arriba que se abre a azul hacia abajo, como el mockup. */
-  background: linear-gradient(160deg, #01091e 8%, #0a1c4d 62%, #143a86 100%);
+.service-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0, 162, 133, 0.12);
+  color: var(--color-teal-600);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.service-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (hover: hover) {
+  .service-card:hover .service-card__icon {
+    background: var(--color-green-500);
+    color: var(--color-white);
+  }
+}
+
+.service-card:focus-visible .service-card__icon,
+.service-card:active .service-card__icon {
+  background: var(--color-green-500);
   color: var(--color-white);
-  border-color: transparent;
 }
 
 .service-card__title {
@@ -1007,10 +1232,6 @@ h2 {
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-ink);
-}
-
-.service-card--dark .service-card__title {
-  color: var(--color-white);
 }
 
 /* El subtítulo va en el mismo color del título, solo más pequeño. */
@@ -1023,10 +1244,6 @@ h2 {
   margin-top: 0.35rem;
 }
 
-.service-card--dark .service-card__kicker {
-  color: var(--color-white);
-}
-
 .service-card__desc {
   font-size: 0.95rem;
   line-height: 1.5;
@@ -1034,8 +1251,115 @@ h2 {
   margin-top: 0.9rem;
 }
 
-.service-card--dark .service-card__desc {
-  color: rgba(255, 255, 255, 0.78);
+/* Variante con foto: la imagen ocupa el ancho completo arriba, sin el
+   padding del resto de la tarjeta (que sí aplica al cuerpo de texto). */
+.service-card--photo {
+  padding: 0;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.service-card--photo .service-card__media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.service-card--photo .service-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+@media (hover: hover) {
+  .service-card--photo:hover .service-card__media img {
+    transform: scale(1.05);
+  }
+}
+
+.service-card--photo:focus-visible .service-card__media img {
+  transform: scale(1.05);
+}
+
+.service-card--photo .service-card__body {
+  padding: 1.4rem 1.6rem 1.6rem;
+}
+
+/* Variante expandible: sin clic ni <details> — se despliega solo con pasar
+   el mouse (o al tocar, en pantallas táctiles) y se cierra al salir. Cerrada
+   solo muestra el título; el despliegue anima el alto con la técnica de
+   grid-template-rows 0fr→1fr, sin JS. align-items: start evita que las
+   tarjetas vecinas se estiren (con el stretch por defecto de la grilla,
+   al abrir una las otras dos quedaban con un hueco en blanco del mismo
+   alto): cada tarjeta cambia de tamaño solo cuando es ella la que está
+   con el mouse encima. */
+.services__grid--collapsible {
+  align-items: start;
+}
+
+.service-card--collapsible {
+  padding: 0;
+  min-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.service-card--collapsible:focus-visible {
+  outline: 2px solid var(--color-green-500);
+  outline-offset: -2px;
+}
+
+.service-card--collapsible .service-card__summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.6rem;
+  /* Alto fijo para que las 3 tarjetas midan lo mismo en reposo, sin
+     depender de si el kicker alcanza a ocupar una o dos líneas. */
+  min-height: 190px;
+}
+
+.service-card--collapsible .service-card__icon {
+  margin-bottom: 1rem;
+}
+
+.service-card--collapsible .service-card__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows var(--transition-base), opacity var(--transition-base);
+}
+
+.service-card--collapsible .service-card__panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 1.6rem 1.6rem;
+}
+
+.service-card--collapsible:hover .service-card__panel,
+.service-card--collapsible:focus-within .service-card__panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.service-card--collapsible .service-card__panel .service-card__media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+/* Estas fotos son ilustraciones 3D sobre fondo blanco sólido (no PNG con
+   transparencia). Como la tarjeta también es blanca, "multiply" hace que
+   ese blanco se funda con el fondo y solo quede visible la ilustración,
+   sin el recuadro de la foto. */
+.service-card--collapsible .service-card__panel .service-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  mix-blend-mode: multiply;
 }
 
 @media (max-width: 900px) {
@@ -1043,14 +1367,12 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .services__intro {
-    grid-column: 1 / -1;
-    padding-right: 0;
-    margin-bottom: var(--space-md);
-  }
-
   .service-card {
     min-height: 260px;
+  }
+
+  .service-card--collapsible {
+    min-height: 0;
   }
 }
 
@@ -1096,6 +1418,13 @@ h2 {
   margin-bottom: var(--space-2xl);
   max-width: 976px;
   margin-inline: auto;
+}
+
+/* Cuando no hay párrafo al lado, el título queda solo y centrado. */
+.implementation__head--center {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
 }
 
 .implementation__head h2 {
@@ -1292,36 +1621,58 @@ h2 {
   line-height: 1.55;
 }
 
-/* Logos de clientes: blancos sobre el fondo oscuro, repartidos a lo ancho */
-.clients {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(1.5rem, 4vw, 3rem);
+/* Logos de clientes: carrusel con desplazamiento automático e infinito.
+   El track duplica la lista de logos (mismo set dos veces en el HTML) y se
+   anima con translateX(-50%): al llegar a la mitad del recorrido ha avanzado
+   exactamente un set completo, así que el salto de vuelta al inicio es
+   invisible. */
+.clients-marquee {
+  overflow: hidden;
+  width: 100%;
   max-width: 976px;
   margin: 0 auto var(--space-2xl);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.clients {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  width: max-content;
+  animation: clients-scroll 26s linear infinite;
+}
+
+.clients-marquee:hover .clients {
+  animation-play-state: paused;
 }
 
 .clients__logo {
-  height: 46px;
+  height: 52px;
   width: auto;
+  object-fit: contain;
+  opacity: 0.75;
+  transition: opacity var(--transition-base);
   flex-shrink: 0;
-  opacity: 0.92;
-  transition: opacity var(--transition-fast);
 }
 
 .clients__logo:hover {
   opacity: 1;
 }
 
-/* Joli es mucho más alto que ancho: se compensa para que pese lo mismo. */
-.clients__logo--joli {
-  height: 40px;
+@keyframes clients-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.clients__logo--inchcape {
-  height: 34px;
+@media (max-width: 560px) {
+  .clients__logo {
+    height: 40px;
+  }
 }
 
 /* Tarjetas de testimonio */
@@ -1492,6 +1843,17 @@ h2 {
 .product__head h2 {
   color: var(--color-white);
   line-height: 1.3;
+}
+
+/* Sin párrafo, el título y los botones quedan centrados en una sola columna. */
+.product__head--center {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+.product__head--center .product__actions {
+  justify-content: center;
 }
 
 .product__intro .text-lead {
@@ -1996,23 +2358,27 @@ h2 {
 
 .footer__badges {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 0.6rem;
   margin-top: var(--space-sm);
 }
 
+/* Sellos reales de certificación (ISO 9001 / ISO 27001): el sello ya trae
+   su propia tarjeta blanca con borde, así que aquí no se le agrega otro
+   fondo encima (eso duplicaba la caja). Tamaño ajustado para que los dos
+   quepan uno al lado del otro dentro de la columna "Contacto" del footer
+   (~240px de ancho en escritorio angosto) sin que se bajen de línea. */
 .footer__badge {
-  width: 46px;
-  height: 46px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
+  height: 60px;
   display: grid;
   place-items: center;
-  color: rgba(255, 255, 255, 0.7);
 }
 
-.footer__badge svg {
-  width: 24px;
-  height: 24px;
+.footer__badge img {
+  height: 58px;
+  width: auto;
+  display: block;
 }
 
 .footer__bottom {
@@ -2243,6 +2609,18 @@ h2 {
   filter: drop-shadow(0 0 30px rgba(3, 207, 136, 0.35));
 }
 
+/* Variante con foto real en vez del ícono sobre el degradado oscuro. */
+.solution-detail__visual--photo {
+  padding: 0;
+}
+
+.solution-detail__visual--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 @media (max-width: 860px) {
   .solution-detail,
   .solution-detail--reverse .solution-detail__visual {
@@ -2252,6 +2630,27 @@ h2 {
 
   .solution-detail__visual {
     min-height: 220px;
+  }
+}
+
+/* Logos reales de certificación (ISO 9001 / ISO 27001) */
+.cert-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2xl);
+  padding-block: var(--space-md);
+}
+
+.cert-logos img {
+  height: 96px;
+  width: auto;
+}
+
+@media (max-width: 560px) {
+  .cert-logos img {
+    height: 72px;
   }
 }
 
@@ -2380,4 +2779,279 @@ h2 {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   color: var(--color-ink-soft);
+}
+
+/* Casos de uso: primero el escenario (párrafo), al final la etiqueta en
+   negrita con el nombre de la solución. */
+.value-card p:first-child {
+  margin-top: 0;
+}
+
+.value-card p:first-child + h3 {
+  margin-top: 0.75rem;
+}
+
+/* ==========================================================================
+   FAQ — acordeón nativo con <details>/<summary>, sin JS
+   ========================================================================== */
+.faq {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding-inline: var(--space-lg);
+  background: var(--color-white);
+}
+
+.faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+  font-weight: 700;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: var(--color-teal-600);
+  transition: transform var(--transition-fast);
+}
+
+.faq-item[open] .faq-item__icon {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  padding-bottom: var(--space-md);
+  color: var(--color-ink-soft);
+  font-size: 0.92rem;
+}
+
+/* ==========================================================================
+   Video / demo — placeholder visual mientras no hay grabación real
+   ========================================================================== */
+.video-placeholder {
+  border-radius: var(--radius-lg);
+  background: var(--gradient-card-dark);
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  gap: var(--space-md);
+  text-align: center;
+  color: var(--color-white);
+}
+
+.video-placeholder__play {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  display: grid;
+  place-items: center;
+}
+
+.video-placeholder__play svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-green-500);
+}
+
+.video-placeholder span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ==========================================================================
+   Formulario de contacto
+   ========================================================================== */
+.contact-form {
+  display: grid;
+  gap: var(--space-md);
+  max-width: 640px;
+}
+
+.contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.form-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  background: var(--color-off-white);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 2px solid var(--color-teal-600);
+  outline-offset: 1px;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+@media (max-width: 640px) {
+  .contact-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Profundidad extra en cards existentes (más sombreado, más "vivo")
+   ========================================================================== */
+.value-card {
+  box-shadow: 0 4px 16px rgba(4, 12, 34, 0.05);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+}
+
+/* Mismo resaltado verde que las tarjetas de servicio, para que todas las
+   "cuadritos" del sitio se comporten igual al tocarlas/pasar el mouse. */
+.value-card:hover,
+.value-card:focus-visible,
+.value-card:active {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(4, 12, 34, 0.1);
+  border-color: var(--color-green-500);
+  background: rgba(3, 207, 136, 0.07);
+}
+
+.value-card:hover .value-card__icon,
+.value-card:focus-visible .value-card__icon,
+.value-card:active .value-card__icon {
+  background: var(--color-green-500);
+  color: var(--color-white);
+}
+
+/* Los stat-row pasan de texto plano a "cuadritos" con sombra */
+.stat-row__item {
+  padding: var(--space-md) var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-off-white);
+  box-shadow: 0 4px 14px rgba(4, 12, 34, 0.05);
+}
+
+.stat-row--dark .stat-row__item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Badge numerado en el stack del home ("Implementamos")
+   ========================================================================== */
+.stack__num {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  background: rgba(3, 207, 136, 0.12);
+  color: var(--stack-icon);
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.stack__item.is-active .stack__num,
+.stack__item:hover .stack__num,
+.stack__item:focus-visible .stack__num {
+  background: var(--gradient-brand);
+  color: var(--color-navy-950);
+}
+
+/* ==========================================================================
+   Steps card — tarjeta oscura con pasos numerados ("cómo funciona")
+   ========================================================================== */
+.steps-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-card-dark);
+  padding: var(--space-xl) var(--space-lg);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(1, 9, 30, 0.35);
+}
+
+.steps-card::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(3, 207, 136, 0.35), transparent 70%);
+  top: 50%;
+  right: -90px;
+  transform: translateY(-50%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.steps-card__item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.steps-card__num {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(3, 207, 136, 0.15);
+  border: 1px solid rgba(3, 207, 136, 0.4);
+  color: var(--color-green-500);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: grid;
+  place-items: center;
+}
+
+.steps-card__item span {
+  color: var(--color-white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
 }

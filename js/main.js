@@ -72,6 +72,22 @@
   });
 
   /* ------------------------------------------------------------------ */
+  /* Submenú anidado dentro de "Servicios TI" (Outsourcing de TI /      */
+  /* Transformación digital): clic en móvil, hover en escritorio vía    */
+  /* CSS.                                                                */
+  /* ------------------------------------------------------------------ */
+  document.querySelectorAll("[data-submenu-toggle]").forEach((toggle) => {
+    toggle.addEventListener("click", (event) => {
+      if (window.innerWidth > 1080) return;
+      event.preventDefault();
+      const group = toggle.closest("[data-submenu]");
+      if (!group) return;
+      const isOpen = group.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
   /* Cerrar menú móvil al presionar Escape                              */
   /* ------------------------------------------------------------------ */
   document.addEventListener("keydown", (event) => {
@@ -128,4 +144,57 @@
   /* ------------------------------------------------------------------ */
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ------------------------------------------------------------------ */
+  /* Conteo animado para las cifras de .stat-row (+22 años, +5.000...)   */
+  /* Si el texto no trae números (ej. "IQNET"), se deja tal cual.        */
+  /* ------------------------------------------------------------------ */
+  const countTargets = document.querySelectorAll(".stat-row__item strong");
+
+  const animateCount = (el) => {
+    const raw = el.textContent.trim();
+    const match = raw.match(/^([+-]?)([\d.,]*\d)(.*)$/);
+    if (!match) return;
+
+    const [, prefix, numStr, suffix] = match;
+    const usesThousandDot = numStr.includes(".");
+    const target = parseInt(numStr.replace(/[.,]/g, ""), 10);
+    if (Number.isNaN(target)) return;
+
+    const format = (value) => {
+      let str = String(Math.round(value));
+      if (usesThousandDot) str = str.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return `${prefix}${str}${suffix}`;
+    };
+
+    const duration = 1200;
+    let startTime = null;
+
+    const step = (timestamp) => {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = format(target * eased);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = format(target);
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  if ("IntersectionObserver" in window && countTargets.length) {
+    const countObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    countTargets.forEach((el) => countObserver.observe(el));
+  }
 })();
