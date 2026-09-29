@@ -1053,6 +1053,15 @@ h2 {
   animation-delay: 1s;
 }
 
+/* En pantallas medianas el texto del hero ocupa más alto y chocaba con esta
+   cifra; se sube a la esquina superior derecha, en espejo con "Sector". */
+@media (min-width: 721px) and (max-width: 1280px) {
+  .hero__stat--teams {
+    top: 14%;
+    right: 2%;
+  }
+}
+
 @keyframes float {
   0%,
   100% {
