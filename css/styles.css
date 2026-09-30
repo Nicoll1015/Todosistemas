@@ -2994,6 +2994,26 @@ h2 {
   justify-content: center;
 }
 
+.contact-form__submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Mensaje de envío: enviando / enviado / error */
+.contact-form__status {
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+}
+
+.contact-form__status[data-type="success"] {
+  color: var(--color-teal-600);
+  font-weight: 500;
+}
+
+.contact-form__status[data-type="error"] {
+  color: #d64545;
+}
+
 .contact-form__submit svg {
   width: 20px;
   height: 20px;

@@ -230,14 +230,74 @@
     msg.textContent = errorText(el);
   };
 
+  /* ------------------------------------------------------------------ */
+  /* Envío del formulario al CRM (leads de marketing).                  */
+  /* El JSON solo tiene los campos del CRM; lo que no tiene campo propio */
+  /* (rol y autorizaciones) viaja dentro de "mensaje".                  */
+  /* ------------------------------------------------------------------ */
+  const LEADS_ENDPOINT = "https://crm.todosistemassti.co/api/marketing/leads/ingest";
+  const LEADS_API_KEY = "lead_53efd4ff_aaa11f80b686912bc868ccd7";
+
+  const buildLead = (form) => {
+    const value = (name) => (form.elements[name]?.value || "").trim();
+    const checked = (name) => (form.elements[name]?.checked ? "Sí" : "No");
+    return {
+      nombreContacto: value("Nombre y apellido"),
+      correo: value("Correo corporativo"),
+      telefono: value("Celular"),
+      nombreEmpresa: value("Empresa"),
+      producto: value("Solución"),
+      mensaje: [
+        `Rol: ${value("Rol")}`,
+        `Autoriza tratamiento de datos: ${checked("Autorización de datos")}`,
+        `Quiere recibir novedades: ${checked("Recibir novedades")}`,
+        `Página: ${document.title}`,
+      ].join(" | "),
+    };
+  };
+
+  const showStatus = (form, type, text) => {
+    let status = form.querySelector(".contact-form__status");
+    if (!status) {
+      status = document.createElement("p");
+      status.className = "contact-form__status";
+      status.setAttribute("role", "status");
+      form.append(status);
+    }
+    status.dataset.type = type;
+    status.textContent = text;
+  };
+
+  const sendLead = async (form) => {
+    const button = form.querySelector('[type="submit"]');
+    button.disabled = true;
+    showStatus(form, "info", "Enviando…");
+    try {
+      const response = await fetch(LEADS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-api-key": LEADS_API_KEY },
+        body: JSON.stringify(buildLead(form)),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      form.reset();
+      showStatus(form, "success", "¡Gracias! Recibimos tu solicitud y te contactaremos pronto para agendar la demo.");
+    } catch (error) {
+      showStatus(form, "error", "No pudimos enviar tu solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.");
+    } finally {
+      button.disabled = false;
+    }
+  };
+
   document.querySelectorAll(".contact-form").forEach((form) => {
     const fields = form.querySelectorAll("input, select");
     form.addEventListener("submit", (e) => {
+      e.preventDefault();
       fields.forEach(showError);
       if (!form.checkValidity()) {
-        e.preventDefault();
         form.querySelector(":invalid")?.focus();
+        return;
       }
+      sendLead(form);
     });
     fields.forEach((el) => {
       el.addEventListener("change", () => {
