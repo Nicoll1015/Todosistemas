@@ -197,4 +197,55 @@
 
     countTargets.forEach((el) => countObserver.observe(el));
   }
+  /* ------------------------------------------------------------------ */
+  /* Validación del formulario de contacto: borde rojo + mensaje debajo */
+  /* de cada campo obligatorio, en vez del globo nativo del navegador.  */
+  /* ------------------------------------------------------------------ */
+  const errorText = (el) => {
+    if (el.type === "checkbox") return "Debes aceptar para continuar.";
+    if (el.tagName === "SELECT") return "Elige una opción.";
+    if (el.validity.typeMismatch) return "Escribe un correo válido.";
+    return "Completa este campo.";
+  };
+
+  const showError = (el) => {
+    const wrap = el.closest(".form-field, .form-check");
+    if (!wrap) return;
+    // En los campos el mensaje va dentro del .form-field (así no rompe la
+    // grilla de dos columnas); en las casillas va justo debajo.
+    const inside = wrap.classList.contains("form-field");
+    let msg = inside ? wrap.querySelector(".form-field__error") : wrap.nextElementSibling;
+    const hasMsg = msg && msg.classList.contains("form-field__error");
+    if (el.checkValidity()) {
+      wrap.classList.remove("is-invalid");
+      if (hasMsg) msg.remove();
+      return;
+    }
+    wrap.classList.add("is-invalid");
+    if (!hasMsg) {
+      msg = document.createElement("p");
+      msg.className = "form-field__error";
+      inside ? wrap.append(msg) : wrap.after(msg);
+    }
+    msg.textContent = errorText(el);
+  };
+
+  document.querySelectorAll(".contact-form").forEach((form) => {
+    const fields = form.querySelectorAll("input, select");
+    form.addEventListener("submit", (e) => {
+      fields.forEach(showError);
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.querySelector(":invalid")?.focus();
+      }
+    });
+    fields.forEach((el) => {
+      el.addEventListener("change", () => {
+        if (el.closest(".is-invalid")) showError(el);
+      });
+      el.addEventListener("input", () => {
+        if (el.closest(".is-invalid")) showError(el);
+      });
+    });
+  });
 })();

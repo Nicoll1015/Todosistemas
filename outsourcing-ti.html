@@ -254,18 +254,40 @@
           <span class="eyebrow">Contacto</span>
           <h2>Cuéntanos sobre tu proyecto</h2>
           <p class="text-lead">Completa el formulario y te contactamos para agendar una demo.</p>
-          <form class="contact-form" action="mailto:mercadeo@todosistemasti.co" method="post" enctype="text/plain" style="margin-top: var(--space-lg)">
-        <div class="contact-form__row">
-          <div class="form-field"><label for="nombre">Nombre</label><input id="nombre" name="Nombre" type="text" required /></div>
-          <div class="form-field"><label for="empresa">Empresa</label><input id="empresa" name="Empresa" type="text" /></div>
-        </div>
-        <div class="contact-form__row">
-          <div class="form-field"><label for="correo">Correo</label><input id="correo" name="Correo" type="email" required /></div>
-          <div class="form-field"><label for="telefono">Teléfono</label><input id="telefono" name="Teléfono" type="tel" /></div>
-        </div>
-        <div class="form-field"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="Mensaje" placeholder="Cuéntanos qué necesitas..."></textarea></div>
-        <button type="submit" class="btn btn--primary">Enviar mensaje<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </form>
+          <form class="contact-form" action="mailto:mercadeo@todosistemasti.co" method="post" enctype="text/plain" style="margin-top: var(--space-lg)" novalidate>
+            <div class="contact-form__row">
+              <div class="form-field"><label for="nombre">Nombre y apellido</label><input id="nombre" name="Nombre y apellido" type="text" autocomplete="name" required /></div>
+              <div class="form-field"><label for="correo">Correo corporativo</label><input id="correo" name="Correo corporativo" type="email" autocomplete="email" placeholder="nombre@empresa.com" required /></div>
+            </div>
+            <div class="contact-form__row">
+              <div class="form-field"><label for="empresa">Empresa</label><input id="empresa" name="Empresa" type="text" autocomplete="organization" required /></div>
+              <div class="form-field"><label for="rol">Rol</label><input id="rol" name="Rol" type="text" autocomplete="organization-title" placeholder="Ej.: Gerente de TI" required /></div>
+            </div>
+            <div class="form-field"><label for="solucion">¿Qué solución quieres ver?</label>
+              <select id="solucion" name="Solución" required>
+                <option value="">Selecciona una opción</option>
+                <option>Soporte de TI</option>
+                <option>Staffing de TI</option>
+                <option>Fábrica de software</option>
+                <option selected>Outsourcing de TI</option>
+                <option>Gestión documental · DocuClick</option>
+                <option>Automatización BPM</option>
+                <option>AuraQuantic BPMS</option>
+                <option>SoftExpert Suite</option>
+                <option>Blue Prism</option>
+                <option>ENJISST</option>
+                <option>Gestión de RRHH</option>
+                <option>Modernización de sistemas legado</option>
+                <option>Desarrollo con IA Agéntica</option>
+                <option>Gobernabilidad de datos</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-field"><label for="celular">Celular <span class="form-field__optional">(opcional)</span></label><input id="celular" name="Celular" type="tel" autocomplete="tel" placeholder="+57 300 000 0000" /></div>
+            <label class="form-check"><input type="checkbox" name="Autorización de datos" value="Sí" required /><span>Autorizo a Todosistemas STI a tratar mis datos personales para atender esta solicitud, según la <a href="#">Política de tratamiento de datos personales</a>.</span></label>
+            <label class="form-check"><input type="checkbox" name="Recibir novedades" value="Sí" /><span>Quiero recibir contenidos y novedades de Todosistemas STI por correo. <span class="form-field__optional">(Opcional)</span></span></label>
+            <button type="submit" class="btn btn--primary contact-form__submit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Agenda tu demo</button>
+          </form>
         </div>
         <div class="solution-detail__visual solution-detail__visual--photo" data-reveal aria-hidden="true">
           <img src="assets/img/contacto-equipo.jpg" alt="" loading="lazy" decoding="async" />
