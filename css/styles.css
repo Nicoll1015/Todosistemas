@@ -1159,15 +1159,26 @@ h2 {
   margin-inline: auto;
 }
 
-/* Grilla de 3 columnas para las tarjetas, pareja en cada fila. */
+/* Grilla de 3 columnas para las tarjetas, pareja en cada fila. Es flex y
+   no grid para que una última fila incompleta (p. ej. 5 tarjetas = 3 + 2)
+   quede centrada en vez de pegada a la izquierda. --cols define cuántas
+   tarjetas caben por fila en cada ancho de pantalla. */
 .services__grid {
+  --cols: 3;
+  --gap: 16px;
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
   max-width: 976px;
   margin-inline: auto;
+}
+
+.services__grid > * {
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  min-width: 0;
 }
 
 .service-card {
@@ -1296,16 +1307,37 @@ h2 {
   padding: 1.4rem 1.6rem 1.6rem;
 }
 
+/* Tarjeta sin foto todavía: fondo navy de marca con un ícono centrado, del
+   mismo tamaño que las fotos. Cuando llegue la foto se cambia por <img>. */
+.service-card--photo .service-card__media--placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--gradient-card-dark);
+  color: var(--color-green-500);
+}
+
+.service-card--photo .service-card__media--placeholder svg {
+  width: 56px;
+  height: 56px;
+  transition: transform var(--transition-base);
+}
+
+@media (hover: hover) {
+  .service-card--photo:hover .service-card__media--placeholder svg {
+    transform: scale(1.08);
+  }
+}
+
 /* Variante expandible: sin clic ni <details> — se despliega solo con pasar
    el mouse (o al tocar, en pantallas táctiles) y se cierra al salir. Cerrada
    solo muestra el título; el despliegue anima el alto con la técnica de
-   grid-template-rows 0fr→1fr, sin JS. align-items: start evita que las
-   tarjetas vecinas se estiren (con el stretch por defecto de la grilla,
+   grid-template-rows 0fr→1fr, sin JS. align-items: flex-start evita que las
+   tarjetas vecinas se estiren (con el stretch por defecto del contenedor,
    al abrir una las otras dos quedaban con un hueco en blanco del mismo
    alto): cada tarjeta cambia de tamaño solo cuando es ella la que está
    con el mouse encima. */
 .services__grid--collapsible {
-  align-items: start;
+  align-items: flex-start;
 }
 
 .service-card--collapsible {
@@ -1373,7 +1405,7 @@ h2 {
 
 @media (max-width: 900px) {
   .services__grid {
-    grid-template-columns: repeat(2, 1fr);
+    --cols: 2;
   }
 
   .service-card {
@@ -1387,7 +1419,7 @@ h2 {
 
 @media (max-width: 560px) {
   .services__grid {
-    grid-template-columns: 1fr;
+    --cols: 1;
   }
 
   .service-card {
@@ -2798,6 +2830,38 @@ h2 {
 
 .value-card p:first-child + h3 {
   margin-top: 0.75rem;
+}
+
+/* Componentes de una suite (p. ej. los módulos de SoftExpert): tarjetas
+   compactas con la sigla del módulo como etiqueta y su nombre. */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.module-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--color-off-white);
+  border: 1px solid var(--color-border);
+}
+
+.module-card__code {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(0, 162, 133, 0.12);
+  color: var(--color-teal-600);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.module-card h3 {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.3;
 }
 
 /* ==========================================================================
