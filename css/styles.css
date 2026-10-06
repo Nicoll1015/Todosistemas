@@ -2592,6 +2592,16 @@ h2 {
   height: 32px;
 }
 
+/* Logo del fabricante en vez del ícono (AuraQuantic, SoftExpert). Mismo
+   alto que el ícono que reemplaza para no mover el resto del bloque. */
+.solution-detail__logo {
+  display: block;
+  width: auto;
+  height: 64px;
+  max-width: 100%;
+  margin-bottom: var(--space-md);
+}
+
 .solution-detail__eyebrow {
   font-size: var(--fs-xs);
   font-weight: 700;
