@@ -1307,25 +1307,24 @@ h2 {
   padding: 1.4rem 1.6rem 1.6rem;
 }
 
-/* Tarjeta sin foto todavía: fondo navy de marca con un ícono centrado, del
-   mismo tamaño que las fotos. Cuando llegue la foto se cambia por <img>. */
-.service-card--photo .service-card__media--placeholder {
+/* Tarjeta con el logo del fabricante en lugar de foto (AuraQuantic,
+   SoftExpert): fondo blanco, el mismo de los archivos del logo, para que no
+   se vea recuadro; el logo va contenido con aire alrededor, en el mismo
+   alto que las fotos. */
+.service-card--photo .service-card__media--logo {
   display: grid;
   place-items: center;
-  background: var(--gradient-card-dark);
-  color: var(--color-green-500);
+  padding: 1.5rem 2.5rem;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.service-card--photo .service-card__media--placeholder svg {
-  width: 56px;
-  height: 56px;
-  transition: transform var(--transition-base);
-}
-
-@media (hover: hover) {
-  .service-card--photo:hover .service-card__media--placeholder svg {
-    transform: scale(1.08);
-  }
+.service-card--photo .service-card__media--logo img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* Variante expandible: sin clic ni <details> — se despliega solo con pasar
