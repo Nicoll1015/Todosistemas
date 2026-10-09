@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/dinamico.css?v=15" />
 </head>
 <body>
 <a class="skip-link" href="#main">Saltar al contenido principal</a>
@@ -96,7 +97,7 @@
     <div class="container">
       <div class="section-head section-head--center" data-reveal>
         <span class="eyebrow" style="justify-content:center">Misión y visión</span>
-        <h2>Hacia dónde vamos.</h2>
+        <h2>Hacia dónde <span class="accent">vamos.</span></h2>
       </div>
       <div class="value-grid">
         <article class="value-card" style="background:#fff" data-reveal>
@@ -113,11 +114,104 @@
     </div>
   </section>
 
+  <section class="section section--tight" id="historia">
+    <div class="container">
+      <div class="section-head section-head--center" data-reveal>
+        <span class="eyebrow" style="justify-content:center">Nuestra historia</span>
+        <h2>Más de dos décadas <span class="accent">transformando procesos.</span></h2>
+      </div>
+      <div class="timeline" data-timeline>
+        <div class="timeline__axis" aria-hidden="true"></div>
+        <ol class="timeline__list">
+          <li class="timeline__item" style="--i:0">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2002</span>
+            <div class="timeline__card" data-year="2002">
+              <span class="timeline__kicker">Nace</span>
+              <strong>Todosistemas STI</strong>
+              <p>Una empresa colombiana de consultoría y asesoría en sistemas de información.</p>
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:1">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2003</span>
+            <div class="timeline__card" data-year="2003">
+              <span class="timeline__kicker">Creamos</span>
+              <strong>Monitor FMS</strong>
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:2">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2005</span>
+            <div class="timeline__card" data-year="2005">
+              <span class="timeline__kicker">Creamos</span>
+              <strong>Monitor Class</strong>
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:3">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2007</span>
+            <div class="timeline__card" data-year="2007">
+              <span class="timeline__kicker">Creamos</span>
+              <strong>AMLRisk</strong>
+              <p>Y hacemos nuestra entrada al Banco Popular.</p>
+              <img class="timeline__logo timeline__logo--mono" src="assets/img/clientes/banco-popular.png" alt="Banco Popular" />
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:4">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2008</span>
+            <div class="timeline__card" data-year="2008">
+              <span class="timeline__kicker">Entramos a</span>
+              <strong>Bancóldex</strong>
+              <img class="timeline__logo timeline__logo--mono" src="assets/img/clientes/bancoldex.png" alt="Bancóldex" />
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:5">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2009</span>
+            <div class="timeline__card" data-year="2009">
+              <span class="timeline__kicker">Alianza con AuroPortal España</span>
+              <strong>Certificación de consultores BPM</strong>
+              <img class="timeline__logo" src="assets/img/soluciones/auraquantic-logo.png" alt="AuraQuantic" />
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:6">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2010</span>
+            <div class="timeline__card" data-year="2010">
+              <span class="timeline__kicker">Nuestro primer</span>
+              <strong>Cliente BPMS</strong>
+              <p>MinTIC</p>
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:7">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2011</span>
+            <div class="timeline__card" data-year="2011">
+              <span class="timeline__kicker">Cambiamos a nuestra</span>
+              <strong>Sede actual</strong>
+              <p>De Todosistemas STI.</p>
+            </div>
+          </li>
+          <li class="timeline__item" style="--i:8">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <span class="timeline__year">2012</span>
+            <div class="timeline__card" data-year="2012">
+              <span class="timeline__kicker">Iniciamos operación en</span>
+              <strong>Centroamérica</strong>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--tight">
     <div class="container">
       <div class="section-head section-head--center" data-reveal>
         <span class="eyebrow" style="justify-content:center">Nuestros valores</span>
-        <h2>Lo que nos define.</h2>
+        <h2>Lo que <span class="accent">nos define.</span></h2>
       </div>
       <div class="value-grid">
         <article class="value-card" style="background:#fff" data-reveal>
@@ -237,5 +331,6 @@
 </a>
 
 <script src="js/main.js" defer></script>
+<script src="js/dinamico.js?v=15" defer></script>
 </body>
 </html>

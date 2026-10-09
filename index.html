@@ -16,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/dinamico.css?v=15" />
 
 <!-- El fondo del hero es LCP: se precarga para que pinte cuanto antes. -->
 <link rel="preload" as="image" href="assets/img/hero-bg-1600.avif" type="image/avif" media="(min-width: 901px)" />
@@ -113,35 +114,88 @@
   <!-- ==========================================================================
        HERO
        ========================================================================== -->
-  <section class="hero pattern-triangles" aria-labelledby="hero-title">
-    <div class="container hero__inner">
-      <div class="hero__stat hero__stat--sector">
-        <strong>Sector</strong>
-        <span>público y privado</span>
-      </div>
-      <div class="hero__stat hero__stat--years">
-        <strong>+22 años</strong>
-        <span>en el mercado</span>
-      </div>
-      <div class="hero__stat hero__stat--teams">
-        <strong>+15 años</strong>
-        <span>automatizando procesos</span>
-      </div>
+  <section class="hero hero--v2" aria-labelledby="hero-title">
+    <div class="container hero-v2">
+      <div class="hero-v2__content">
+        <a class="hero-v2__badge" href="gestion-documental.html">
+          <span class="hero-v2__badge-tag">Nuevo</span>
+          DocuClick: gestión documental con BPM
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
 
-      <div class="hero__content" data-reveal>
-        <h1 class="hero__title" id="hero-title">
+        <h1 class="hero__title hero-v2__title" id="hero-title">
           Tus procesos, <span class="accent">digitalizados.</span><br />
           Tu operación, <span class="accent">en control.</span>
         </h1>
-        <p class="hero__lead">
+
+        <p class="hero-v2__typed">
+          Con cero código para
+          <span class="hero-v2__typed-word" data-typed="tu gestión documental|tus flujos de aprobación|tus procesos misionales|tu firma electrónica">tu gestión documental</span>
+        </p>
+
+        <p class="hero-v2__lead">
           <strong>Automatizamos los procesos misionales</strong> para apoyar la transformación digital de las empresas, en procura de mejorar su eficiencia, eficacia y productividad con cero código.
         </p>
-        <div class="hero__actions">
+
+        <div class="hero-v2__actions">
           <a href="https://wa.me/573212304684" class="btn btn--primary" target="_blank" rel="noopener">
             Agendar una demo
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
+          <a href="soluciones.html" class="btn btn--outline-light">
+            Ver soluciones
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
+      </div>
+
+      <!-- Panel ilustrativo: un documento recorre el flujo de DocuClick -->
+      <div class="hero-v2__visual" aria-hidden="true">
+        <div class="doc-panel" data-doc-flow>
+          <div class="doc-panel__head">
+            <span class="doc-panel__dots"><i></i><i></i><i></i></span>
+            <span class="doc-panel__title">DocuClick · Flujo documental</span>
+            <span class="doc-panel__live"><i></i>En vivo</span>
+          </div>
+
+          <div class="doc-panel__body">
+            <div class="doc-sheet">
+              <span class="doc-sheet__icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="doc-sheet__line"></span>
+              <span class="doc-sheet__line doc-sheet__line--short"></span>
+              <span class="doc-sheet__line"></span>
+              <span class="doc-sheet__line doc-sheet__line--mid"></span>
+              <span class="doc-sheet__line"></span>
+              <span class="doc-sheet__name">Contrato_2026.pdf</span>
+              <span class="doc-sheet__scan"></span>
+              <span class="doc-sheet__stamp">Aprobado</span>
+            </div>
+
+            <ol class="doc-steps">
+              <li class="doc-step" data-doc-step><span class="doc-step__icon"></span><span class="doc-step__text"><strong>Radicado</strong><small>N.° 2026-00418</small></span><span class="doc-step__badge"></span></li>
+              <li class="doc-step" data-doc-step><span class="doc-step__icon"></span><span class="doc-step__text"><strong>Clasificado con IA</strong><small>Tipo: contrato</small></span><span class="doc-step__badge"></span></li>
+              <li class="doc-step" data-doc-step><span class="doc-step__icon"></span><span class="doc-step__text"><strong>Revisión jurídica</strong><small>Regla de negocio aplicada</small></span><span class="doc-step__badge"></span></li>
+              <li class="doc-step" data-doc-step><span class="doc-step__icon"></span><span class="doc-step__text"><strong>Firma electrónica</strong><small>2 de 2 firmantes</small></span><span class="doc-step__badge"></span></li>
+              <li class="doc-step" data-doc-step><span class="doc-step__icon"></span><span class="doc-step__text"><strong>Archivado</strong><small>Según TRD</small></span><span class="doc-step__badge" data-final="Aprobado"></span></li>
+            </ol>
+          </div>
+
+          <div class="doc-panel__progress"><span></span></div>
+        </div>
+
+        <span class="doc-chip doc-chip--a"><i>✓</i> Cero papel</span>
+        <span class="doc-chip doc-chip--b"><i>⚡</i> Flujos ilimitados</span>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hero-v2__stats">
+        <div class="hero-v2__stat"><strong>+22</strong><span>años en el mercado</span></div>
+        <div class="hero-v2__stat"><strong>+15</strong><span>años automatizando procesos</span></div>
+        <div class="hero-v2__stat"><strong>+5.000</strong><span>equipos implementados</span></div>
+        <div class="hero-v2__stat"><strong>Sector</strong><span>público y privado</span></div>
       </div>
     </div>
 
@@ -363,12 +417,18 @@
             </linearGradient>
           </defs>
 
+          <g class="stack__layer">
           <rect x="-100" y="-100" width="200" height="200" rx="30" fill="url(#stackBottom)"
                 transform="translate(195 359) scale(1.379 0.884) rotate(45)" />
+          </g>
+          <g class="stack__layer">
           <rect x="-100" y="-100" width="200" height="200" rx="30" fill="url(#stackMiddle)"
                 transform="translate(195 247) scale(1.379 0.884) rotate(45)" />
+          </g>
+          <g class="stack__layer">
           <rect x="-100" y="-100" width="200" height="200" rx="30" fill="url(#stackTop)"
                 transform="translate(195 135) scale(1.379 0.884) rotate(45)" />
+          </g>
         </svg>
 
         <ul class="stack__items">
@@ -700,5 +760,6 @@
 </a>
 
 <script src="js/main.js" defer></script>
+<script src="js/dinamico.js?v=15" defer></script>
 </body>
 </html>
