@@ -385,9 +385,27 @@
     }
   }
 
+  // DocuClick: al llegar a la sección, los ítems se encienden uno a uno
+  // y al final quedan todos en verde.
   const docuItems = [...document.querySelectorAll(".docu__item")];
-  docuItems[0]?.classList.add("dyn-lit");
-  autoCycle(docuItems, "dyn-lit", 1600, null);
+  if (docuItems.length) {
+    const lightDocu = () =>
+      docuItems.forEach((it, i) => setTimeout(() => it.classList.add("dyn-lit"), 300 + i * 450));
+    if (hasIO) {
+      const docuObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            docuObserver.disconnect();
+            lightDocu();
+          }
+        },
+        { threshold: 0.25 }
+      );
+      docuObserver.observe(docuItems[0].closest(".docu") || docuItems[0]);
+    } else {
+      lightDocu();
+    }
+  }
 
   /* ------------------------------------------------------------------ */
   /* Frase que se escribe y se borra sola (data-typed="a|b|c")          */

@@ -1932,14 +1932,24 @@ html.cookies-lock body {
     linear-gradient(225deg, rgba(0, 0, 0, 0.12) 25%, transparent 25%) 0 0 / 56px 56px;
 }
 
-/* Línea del tiempo (Nosotros): todos los hitos en azul */
+/* Línea del tiempo (Nosotros): azul eléctrico a violeta */
 .timeline {
-  --tl-green: var(--tl-blue);
-  --tl-green-glow: var(--tl-blue-glow);
+  --tl-blue: #3a5bf5;
+  --tl-blue-glow: #8fa4ff;
+  --tl-green: #3a5bf5;
+  --tl-green-glow: #8fa4ff;
 }
 
 .timeline__axis::after {
-  background: linear-gradient(90deg, var(--color-navy-900), var(--tl-blue) 40%);
+  background: linear-gradient(90deg, #2b47e6, #3a5bf5 45%, #6a3fe0 100%);
+}
+
+.timeline__card.dyn-card .dyn-card__fill {
+  background: linear-gradient(135deg, #2b4ef2 0%, #3a3fdc 55%, #5b34d6 100%);
+}
+
+.timeline__card.is-lit {
+  border-color: #6f86ff;
 }
 
 /* ¿Qué necesitas resolver?: azul rey #05143F */
@@ -3897,13 +3907,19 @@ html.cookies-lock body {
 html.is-lite [data-reveal],
 html.is-lite .dyn-reveal,
 html.is-lite .dyn-word,
-html.is-lite .sc-a,
 html.is-lite .utabs__panel,
 html.is-lite .ftabs__panel {
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
   transition: none !important;
+  animation: none !important;
+}
+
+/* Piezas de las pantallas de ejemplo: visibles, pero sin tocar su
+   posición (varias se centran con transform) */
+html.is-lite .sc-a {
+  opacity: 1 !important;
   animation: none !important;
 }
 
@@ -3959,6 +3975,40 @@ html.is-lite .placeholder-hero--split {
     text-align: center;
     line-height: 1.2;
   }
+}
+
+/* DocuClick en celular: los botones van debajo de la lista */
+@media (max-width: 820px) {
+  .product > .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product__head,
+  .product__intro {
+    display: contents;
+  }
+
+  .product__actions {
+    order: 2;
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+
+  .product .docu {
+    order: 1;
+  }
+}
+
+/* DocuClick: cada ítem encendido queda en verde */
+.docu__item.dyn-lit {
+  border-color: rgba(3, 207, 136, 0.65);
+  background: rgba(3, 207, 136, 0.1);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+
+.docu__item .docu__badge {
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 /* Tarjetas de casos de uso: el título va antes de la explicación */
