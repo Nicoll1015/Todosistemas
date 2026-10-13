@@ -1932,24 +1932,24 @@ html.cookies-lock body {
     linear-gradient(225deg, rgba(0, 0, 0, 0.12) 25%, transparent 25%) 0 0 / 56px 56px;
 }
 
-/* Línea del tiempo (Nosotros): verde de la marca, en tono oscuro */
+/* Línea del tiempo (Nosotros): verde de la marca, un poco más claro */
 .timeline {
-  --tl-blue: #00855f;
+  --tl-blue: #00a285;
   --tl-blue-glow: #1ee39d;
-  --tl-green: #00855f;
+  --tl-green: #00a285;
   --tl-green-glow: #1ee39d;
 }
 
 .timeline__axis::after {
-  background: linear-gradient(90deg, #005c45, #00855f 45%, #00a285 100%);
+  background: linear-gradient(90deg, #00866c, #00a285 45%, #03cf88 100%);
 }
 
 .timeline__card.dyn-card .dyn-card__fill {
-  background: linear-gradient(135deg, #006e52 0%, #00563f 55%, #01382c 100%);
+  background: linear-gradient(135deg, #03b383 0%, #00957a 55%, #007a63 100%);
 }
 
 .timeline__card.is-lit {
-  border-color: #00a285;
+  border-color: #03cf88;
 }
 
 /* ¿Qué necesitas resolver?: azul rey #05143F */
