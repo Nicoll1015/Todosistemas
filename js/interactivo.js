@@ -404,16 +404,20 @@
   /* Celular: "¿Qué necesitas resolver?" como lista que se despliega    */
   /* ------------------------------------------------------------------ */
   const mqAcc = window.matchMedia("(max-width: 820px)");
-  document.querySelectorAll('.utabs[data-tabs]:not([data-tabs="manual"])').forEach((root) => {
-    const tabs = [...root.querySelectorAll('[role="tab"]')];
+  // Convierte unas pestañas en lista desplegable cuando la pantalla es angosta
+  const makeAccordion = (root, tabSel) => {
+    const tabs = [...root.querySelectorAll(tabSel)];
     const panels = tabs.map((t) => document.getElementById(t.getAttribute("aria-controls")));
+    if (!tabs.length || panels.some((p) => !p)) return;
     const heads = panels.map((panel, i) => {
       const b = document.createElement("button");
       b.type = "button";
-      b.className = "utabs__acc";
+      b.className = "acc-head";
       b.setAttribute("aria-expanded", "false");
       b.setAttribute("aria-controls", panel.id);
-      b.innerHTML = `<span>${tabs[i].textContent}</span><i aria-hidden="true"></i>`;
+      const icon = tabs[i].querySelector(".ftabs__icon");
+      const name = (tabs[i].querySelector(".ftabs__name") || tabs[i]).textContent.trim();
+      b.innerHTML = `${icon ? `<span class="acc-head__icon">${icon.innerHTML}</span>` : ""}<span class="acc-head__name">${name}</span><i aria-hidden="true"></i>`;
       panel.before(b);
       return b;
     });
@@ -424,7 +428,7 @@
         tabs[i].click(); // abre ese panel y detiene el cambio automático
         if (wasOpen) panels[i].hidden = true;
         sync();
-        if (!wasOpen) h.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+        if (!wasOpen) h.scrollIntoView({ block: "nearest" });
       });
     });
     const apply = () => {
@@ -437,5 +441,7 @@
     };
     apply();
     mqAcc.addEventListener("change", apply);
-  });
+  };
+  document.querySelectorAll('.utabs[data-tabs]:not([data-tabs="manual"])').forEach((root) => makeAccordion(root, '[role="tab"]'));
+  document.querySelectorAll(".ftabs").forEach((root) => makeAccordion(root, ".ftabs__tab"));
 })();

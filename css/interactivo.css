@@ -3746,28 +3746,28 @@ html.cookies-lock body {
   filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(3, 207, 136, 0.7));
 }
 
-/* Lista desplegable (celular) para "¿Qué necesitas resolver?" */
-.utabs__acc {
+/* Lista desplegable en celular ("¿Qué necesitas resolver?" y "Características clave") */
+.acc-head {
   display: none;
 }
 
-.utabs.is-acc .utabs__list {
+.is-acc > .utabs__list,
+.is-acc > .ftabs__list {
   display: none;
 }
 
-.utabs.is-acc .utabs__acc {
+.is-acc .acc-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 0.8rem;
   width: 100%;
   margin-top: 0.6rem;
-  padding: 1.05rem 1.2rem;
+  padding: 1rem 1.1rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: #fff;
   font: inherit;
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 600;
   text-align: left;
   color: var(--color-ink);
@@ -3775,7 +3775,28 @@ html.cookies-lock body {
   cursor: pointer;
 }
 
-.utabs.is-acc .utabs__acc i {
+.acc-head__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 8px;
+  clip-path: polygon(50% 0, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  background: var(--gradient-brand);
+  color: #fff;
+}
+
+.acc-head__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.acc-head__name {
+  flex: 1;
+}
+
+.is-acc .acc-head i {
   position: relative;
   flex: none;
   width: 28px;
@@ -3784,8 +3805,8 @@ html.cookies-lock body {
   background: rgba(3, 207, 136, 0.14);
 }
 
-.utabs.is-acc .utabs__acc i::before,
-.utabs.is-acc .utabs__acc i::after {
+.is-acc .acc-head i::before,
+.is-acc .acc-head i::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -3798,25 +3819,25 @@ html.cookies-lock body {
   transition: transform var(--transition-base);
 }
 
-.utabs.is-acc .utabs__acc i::after {
+.is-acc .acc-head i::after {
   transform: rotate(90deg);
 }
 
-.utabs.is-acc .utabs__acc[aria-expanded="true"] {
+.is-acc .acc-head[aria-expanded="true"] {
   border-color: var(--color-navy-900);
   background: var(--color-navy-900);
   color: #fff;
 }
 
-.utabs.is-acc .utabs__acc[aria-expanded="true"] i::after {
+.is-acc .acc-head[aria-expanded="true"] i::after {
   transform: rotate(0deg);
 }
 
+/* "¿Qué necesitas resolver?" abierto */
 .utabs.is-acc .utabs__panel {
   margin-top: 0.5rem;
 }
 
-/* En la lista, primero la explicación y después la pantalla de ejemplo */
 .utabs.is-acc .res > div:not(.res__visual) {
   order: -1;
 }
@@ -3828,6 +3849,46 @@ html.cookies-lock body {
 
 .utabs.is-acc .res h3 {
   display: none;
+}
+
+/* "Características clave" como lista: sin marco de módulo */
+.ftabs.is-acc {
+  display: block;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.ftabs.is-acc .ftabs__panels {
+  padding: 0;
+  background: none;
+}
+
+.ftabs.is-acc .ftabs__panel {
+  margin-top: 0.5rem;
+  padding: 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+
+.ftabs.is-acc .ftabs__head {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.ftabs.is-acc .ftabs__hex,
+.ftabs.is-acc .ftabs__text h3 {
+  display: none;
+}
+
+.ftabs.is-acc .ftabs__text p {
+  margin-bottom: 1rem;
+}
+
+.ftabs.is-acc .sc__body {
+  min-height: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -3854,6 +3915,64 @@ html.is-lite {
 html.is-lite .header {
   background: var(--color-navy-950);
   box-shadow: 0 1px 0 rgba(3, 207, 136, 0.25);
+}
+
+/* Menú desplegable: abre al instante y la barra del logo queda fija */
+html.is-lite .nav {
+  transition: none;
+}
+
+.header:has(.nav.is-open) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  background: var(--color-navy-950);
+}
+
+body:has(.nav.is-open) {
+  padding-top: var(--header-h);
+}
+
+/* Portadas internas en celular: sin ilustración (se veía pequeña y con
+   etiquetas montadas); queda el título y el texto */
+html.is-lite .placeholder-hero .hero-v2__visual {
+  display: none;
+}
+
+html.is-lite .placeholder-hero--split {
+  padding-bottom: var(--space-xl);
+}
+
+/* Home, franja de tecnología en celular: mosaicos legibles */
+@media (max-width: 820px) {
+  .intg__wall,
+  .intg__col {
+    gap: 0.5rem;
+  }
+
+  .intg__col span {
+    height: 58px;
+    padding: 0 0.3rem;
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+}
+
+/* Tarjetas de casos de uso: el título va antes de la explicación */
+.value-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.value-card > .value-card__icon {
+  order: -2;
+}
+
+.value-card > h3 {
+  order: -1;
 }
 
 /* --------------------------------------------------------------------------

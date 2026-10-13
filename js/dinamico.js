@@ -211,7 +211,7 @@
     "soporte-ti": () =>
       `<div class="cx-sla"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="86" class="cx-sla__track"/><circle cx="100" cy="100" r="86" class="cx-sla__fill"/></svg><span class="cx-sla__tick"></span><i>${ico("headset")}</i><b>98%</b><small>dentro del SLA</small></div>
       ${["#4821 · Clave", "#4822 · Impresora", "#4823 · Servidor"].map((t, i) => `<span class="cx-ticket" style="--d:${i}"><i>${ico(i === 2 ? "db" : "wrench")}</i>${t}<em>${i === 2 ? "Nivel 2" : "Nivel 1"}</em></span>`).join("")}` +
-      toast("clock", "Soporte 24/7", "Respuesta ágil", "dv-toast--tl") + toast("chat", "Seguimiento", "Post-resolución", "dv-toast--br"),
+      toast("clock", "Soporte 24/7", "Respuesta ágil", "dv-toast--tl") + toast("chat", "Seguimiento", "Posresolución", "dv-toast--br"),
 
     // 4 · Tablero de sprint flotante: tarjetas que avanzan hasta la entrega
     "fabrica-software": () =>
