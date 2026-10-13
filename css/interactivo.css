@@ -3831,6 +3831,32 @@ html.cookies-lock body {
 }
 
 /* --------------------------------------------------------------------------
+   Modo ligero (celular): todo el contenido visible desde el inicio
+   -------------------------------------------------------------------------- */
+html.is-lite [data-reveal],
+html.is-lite .dyn-reveal,
+html.is-lite .dyn-word,
+html.is-lite .sc-a,
+html.is-lite .utabs__panel,
+html.is-lite .ftabs__panel {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+html.is-lite {
+  scroll-behavior: auto;
+}
+
+/* Menú siempre sólido, sin transparencia sobre el contenido */
+html.is-lite .header {
+  background: var(--color-navy-950);
+  box-shadow: 0 1px 0 rgba(3, 207, 136, 0.25);
+}
+
+/* --------------------------------------------------------------------------
    Rendimiento en celular
    -------------------------------------------------------------------------- */
 /* Mientras el aviso de cookies está abierto, la página no anima nada */

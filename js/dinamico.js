@@ -7,7 +7,8 @@
 (() => {
   "use strict";
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("is-lite");
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const hasIO = "IntersectionObserver" in window;
   // Raíz del sitio (carpeta padre de js/), para que las imágenes funcionen desde cualquier carpeta

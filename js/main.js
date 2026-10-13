@@ -182,7 +182,10 @@
     requestAnimationFrame(step);
   };
 
-  if ("IntersectionObserver" in window && countTargets.length) {
+  // Modo ligero (celular): las cifras se muestran completas, sin conteo
+  const isLite = document.documentElement.classList.contains("is-lite");
+
+  if (!isLite && "IntersectionObserver" in window && countTargets.length) {
     const countObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

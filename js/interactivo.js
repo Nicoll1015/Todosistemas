@@ -7,7 +7,8 @@
 (() => {
   "use strict";
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.classList.contains("is-lite");
   // Raíz del sitio (carpeta padre de js/), para enlazar páginas desde cualquier carpeta
   const ROOT = new URL("../", document.currentScript.src).href;
 
