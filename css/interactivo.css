@@ -3839,6 +3839,40 @@ html.cookies-lock body > *:not(.cookies):not(.cookies-veil) * {
   animation-play-state: paused !important;
 }
 
+/* El borde de luz de las tarjetas solo gira cuando se ve (antes giraba
+   siempre, aunque estuviera invisible, y obligaba a redibujar sin parar) */
+.dyn-card__border {
+  animation-play-state: paused;
+}
+
+.dyn-card:hover .dyn-card__border,
+.dyn-card:focus-within .dyn-card__border,
+.dyn-card.is-lit .dyn-card__border {
+  animation-play-state: running;
+}
+
+@media (max-width: 820px), (hover: none) {
+  /* Aurora de las portadas: tres manchas con desenfoque de 80 px en
+     movimiento constante; en celular quedan fijas y sin mezcla */
+  .dyn-aurora span {
+    animation: none !important;
+    filter: blur(50px);
+    mix-blend-mode: normal;
+    opacity: 0.3;
+  }
+
+  /* Bordes giratorios y brillos de tarjetas: fijos en celular */
+  .dyn-card__border,
+  .dyn-card__spot {
+    animation: none !important;
+  }
+
+  /* Entrada del título sin desenfoque */
+  .dyn-word {
+    filter: none !important;
+  }
+}
+
 @media (max-width: 820px) {
   /* El desenfoque de fondo es lo más costoso para un celular */
   *,
