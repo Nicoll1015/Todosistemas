@@ -4011,17 +4011,14 @@ html.is-lite .placeholder-hero--split {
   transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-/* Tarjetas de casos de uso: el título va antes de la explicación */
+/* Tarjetas de casos de uso: primero el escenario ("Cuando…") y al final
+   el título, en el mismo orden del HTML. El ícono, si lo hay, va arriba. */
 .value-card {
   display: flex;
   flex-direction: column;
 }
 
 .value-card > .value-card__icon {
-  order: -2;
-}
-
-.value-card > h3 {
   order: -1;
 }
 
