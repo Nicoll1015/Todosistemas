@@ -10,6 +10,8 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const hasIO = "IntersectionObserver" in window;
+  // Raíz del sitio (carpeta padre de js/), para que las imágenes funcionen desde cualquier carpeta
+  const ROOT = new URL("../", document.currentScript.src).href;
 
   /* ------------------------------------------------------------------ */
   /* Hero: aurora de color; en páginas internas, documentos flotantes   */
@@ -101,8 +103,8 @@
   const node = (icon, label, cls = "", style = "") => `<div class="cx-node ${cls}" style="${style}"><i>${ico(icon)}</i>${label ? `<small>${label}</small>` : ""}</div>`;
   const glass = (inner, cls = "", style = "") => `<div class="cx-glass ${cls}" style="${style}">${inner}</div>`;
   const CLIENTS = [
-    ["banco-popular", "Banco Popular"], ["alianza-fiduciaria", "Alianza Fiduciaria"], ["beneficiar", "Beneficiar"],
-    ["escuela-julio-garavito", "Escuela Julio Garavito"], ["incocredito", "Incocrédito"], ["sur-occidente", "Sur Occidente"],
+    ["alianza-fiduciaria", "Alianza Fiduciaria"], ["ffie", "FFIE"], ["alpopular", "Alpopular"],
+    ["beneficiar", "Beneficiar"], ["escuela-julio-garavito", "Escuela Julio Garavito"], ["incocredito", "Incocrédito"],
   ];
 
   // Cada página tiene su propio concepto visual (ver comentario de cada una)
@@ -231,7 +233,7 @@
     // 4 · Capas de la plataforma con las certificaciones reales
     tecnologia: () =>
       `<div class="cx-stack">${[["lock", "Seguridad de la información"], ["chart", "Dashboards en tiempo real"], ["bot", "RPA"], ["ai", "Inteligencia Artificial"], ["map", "AuraQuantic BPMS"]].map(([k, t], i) => `<div class="cx-plate" style="--i:${i}"><span>${ico(k)}</span></div><span class="cx-plate__label" style="--i:${i}">${t}</span>`).join("")}</div>
-      <div class="cx-seal cx-seal--a"><img src="assets/img/certificaciones/iso-9001.svg" alt="" /></div><div class="cx-seal cx-seal--b"><img src="assets/img/certificaciones/iso-27001.svg" alt="" /></div>`,
+      <div class="cx-seal cx-seal--a"><img src="${ROOT}assets/img/certificaciones/iso-9001.svg" alt="" /></div><div class="cx-seal cx-seal--b"><img src="${ROOT}assets/img/certificaciones/iso-27001.svg" alt="" /></div>`,
 
     // 4 · Cinco pilares que sostienen tu operación
     soluciones: () =>
@@ -239,14 +241,13 @@
 
     // 4 · Collage con fotos reales del equipo y sus valores
     nosotros: () =>
-      `<div class="cx-photo cx-photo--main"><img src="assets/img/equipo-todosistemas.jpg" alt="" /></div><div class="cx-photo cx-photo--side"><img src="assets/img/contacto-equipo.jpg" alt="" /></div>
+      `<div class="cx-photo cx-photo--main"><img src="${ROOT}assets/img/equipo/equipo-todosistemas.jpg" alt="" /></div><div class="cx-photo cx-photo--side"><img src="${ROOT}assets/img/equipo/contacto-equipo.jpg" alt="" /></div>
       <svg class="cx-stamp" viewBox="0 0 120 120"><defs><path id="cxst" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><text><textPath href="#cxst">TODOSISTEMAS STI · +22 AÑOS · TODOSISTEMAS STI · +22 AÑOS ·</textPath></text></svg><span class="cx-stamp__core">+22</span>` +
       ["Humana", "Adaptable", "Ética"].map((t, i) => `<span class="cx-value" style="--d:${i};${["left:4%;bottom:14%", "left:30%;bottom:0", "right:34%;top:2%"][i]}">${ico(["users", "refresh", "shield"][i])}${t}</span>`).join(""),
 
-    // 4 · Muro con los logos reales de clientes y su testimonio
+    // 4 · Muro con los logos reales de clientes
     "casos-de-exito": () =>
-      `<div class="cx-logos">${CLIENTS.map(([f, n], i) => `<span style="--d:${i}"><img src="assets/img/clientes/${f}-white.png" alt="${n}" /></span>`).join("")}</div>` +
-      glass(`<span class="cx-quote__mark">“</span><p>Desde que trabajamos con Todosistemas STI, el proceso se volvió mucho más claro. Hoy tenemos control real.</p><small>Mario Ordoñez · Contador</small>`, "cx-quote") +
+      `<div class="cx-logos">${CLIENTS.map(([f, n], i) => `<span style="--d:${i}"><img src="${ROOT}assets/img/clientes/${f}-logo.png" alt="${n}" /></span>`).join("")}</div>` +
       glass(`<b>+5.000</b><small>equipos implementados</small>`, "cx-count cx-count--r"),
   };
 

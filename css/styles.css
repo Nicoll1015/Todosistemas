@@ -354,10 +354,10 @@ h2 {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url("../assets/img/hero-bg-1600.webp");
+  background-image: url("../assets/img/fondos/hero-bg-1600.webp");
   background-image: image-set(
-    url("../assets/img/hero-bg-1600.avif") type("image/avif"),
-    url("../assets/img/hero-bg-1600.webp") type("image/webp")
+    url("../assets/img/fondos/hero-bg-1600.avif") type("image/avif"),
+    url("../assets/img/fondos/hero-bg-1600.webp") type("image/webp")
   );
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -368,10 +368,10 @@ h2 {
 
 @media (max-width: 900px) {
   .pattern-triangles::before {
-    background-image: url("../assets/img/hero-bg-900.webp");
+    background-image: url("../assets/img/fondos/hero-bg-900.webp");
     background-image: image-set(
-      url("../assets/img/hero-bg-900.avif") type("image/avif"),
-      url("../assets/img/hero-bg-900.webp") type("image/webp")
+      url("../assets/img/fondos/hero-bg-900.avif") type("image/avif"),
+      url("../assets/img/fondos/hero-bg-900.webp") type("image/webp")
     );
   }
 }
@@ -2200,10 +2200,10 @@ h2 {
   position: relative;
   padding-block: var(--space-2xl);
   background-color: var(--color-white);
-  background-image: url("../assets/img/cta-bg-1920.webp");
+  background-image: url("../assets/img/fondos/cta-bg-1920.webp");
   background-image: image-set(
-    url("../assets/img/cta-bg-1920.avif") type("image/avif"),
-    url("../assets/img/cta-bg-1920.webp") type("image/webp")
+    url("../assets/img/fondos/cta-bg-1920.avif") type("image/avif"),
+    url("../assets/img/fondos/cta-bg-1920.webp") type("image/webp")
   );
   background-repeat: no-repeat;
   background-position: center;
@@ -2212,10 +2212,10 @@ h2 {
 
 @media (max-width: 1000px) {
   .cta-banner-wrap {
-    background-image: url("../assets/img/cta-bg-1000.webp");
+    background-image: url("../assets/img/fondos/cta-bg-1000.webp");
     background-image: image-set(
-      url("../assets/img/cta-bg-1000.avif") type("image/avif"),
-      url("../assets/img/cta-bg-1000.webp") type("image/webp")
+      url("../assets/img/fondos/cta-bg-1000.avif") type("image/avif"),
+      url("../assets/img/fondos/cta-bg-1000.webp") type("image/webp")
     );
   }
 }
