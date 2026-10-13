@@ -304,14 +304,24 @@
       <button class="cookies__btn cookies__btn--ghost" type="button" data-act="save" hidden>Guardar preferencias</button>
       <button class="cookies__btn cookies__btn--primary" type="button" data-act="accept">Aceptar todas</button>
     </div>`;
-  document.body.append(banner);
+  // Fondo oscuro: bloquea la página hasta que la persona elige
+  const veil = document.createElement("div");
+  veil.className = "cookies-veil";
+  veil.hidden = true;
+  document.body.append(veil, banner);
+  banner.setAttribute("aria-modal", "true");
 
   const prefs = banner.querySelector(".cookies__prefs");
   const box = (cat) => banner.querySelector(`[data-cat="${cat}"]`);
   const btn = (act) => banner.querySelector(`[data-act="${act}"]`);
   const close = () => {
     banner.classList.remove("is-open");
-    setTimeout(() => (banner.hidden = true), reduceMotion ? 0 : 300);
+    veil.classList.remove("is-open");
+    document.documentElement.classList.remove("cookies-lock");
+    setTimeout(() => {
+      banner.hidden = true;
+      veil.hidden = true;
+    }, reduceMotion ? 0 : 300);
   };
   const open = (withPrefs) => {
     const c = readConsent();
@@ -321,8 +331,18 @@
     btn("config").hidden = withPrefs;
     btn("save").hidden = !withPrefs;
     banner.hidden = false;
-    requestAnimationFrame(() => banner.classList.add("is-open"));
+    veil.hidden = false;
+    document.documentElement.classList.add("cookies-lock");
+    requestAnimationFrame(() => {
+      banner.classList.add("is-open");
+      veil.classList.add("is-open");
+      (btn("accept") || banner).focus({ preventScroll: true });
+    });
   };
+
+  document.addEventListener("focusin", (e) => {
+    if (!banner.hidden && !banner.contains(e.target)) (btn("accept") || banner).focus();
+  });
 
   banner.addEventListener("click", (e) => {
     const act = e.target.closest("[data-act]")?.dataset.act;
