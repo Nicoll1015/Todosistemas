@@ -398,4 +398,43 @@
         )
         .join("");
   });
+
+  /* ------------------------------------------------------------------ */
+  /* Celular: "¿Qué necesitas resolver?" como lista que se despliega    */
+  /* ------------------------------------------------------------------ */
+  const mqAcc = window.matchMedia("(max-width: 820px)");
+  document.querySelectorAll('.utabs[data-tabs]:not([data-tabs="manual"])').forEach((root) => {
+    const tabs = [...root.querySelectorAll('[role="tab"]')];
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute("aria-controls")));
+    const heads = panels.map((panel, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "utabs__acc";
+      b.setAttribute("aria-expanded", "false");
+      b.setAttribute("aria-controls", panel.id);
+      b.innerHTML = `<span>${tabs[i].textContent}</span><i aria-hidden="true"></i>`;
+      panel.before(b);
+      return b;
+    });
+    const sync = () => heads.forEach((h, k) => h.setAttribute("aria-expanded", String(!panels[k].hidden)));
+    heads.forEach((h, i) => {
+      h.addEventListener("click", () => {
+        const wasOpen = !panels[i].hidden;
+        tabs[i].click(); // abre ese panel y detiene el cambio automático
+        if (wasOpen) panels[i].hidden = true;
+        sync();
+        if (!wasOpen) h.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+      });
+    });
+    const apply = () => {
+      root.classList.toggle("is-acc", mqAcc.matches);
+      if (mqAcc.matches) {
+        tabs[0].click(); // detiene el cambio automático de pestañas
+        panels.forEach((p) => (p.hidden = true));
+      }
+      sync();
+    };
+    apply();
+    mqAcc.addEventListener("change", apply);
+  });
 })();

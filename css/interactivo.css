@@ -3746,6 +3746,90 @@ html.cookies-lock body {
   filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(3, 207, 136, 0.7));
 }
 
+/* Lista desplegable (celular) para "¿Qué necesitas resolver?" */
+.utabs__acc {
+  display: none;
+}
+
+.utabs.is-acc .utabs__list {
+  display: none;
+}
+
+.utabs.is-acc .utabs__acc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 1.05rem 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  font: inherit;
+  font-size: 1.02rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--color-ink);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.utabs.is-acc .utabs__acc i {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(3, 207, 136, 0.14);
+}
+
+.utabs.is-acc .utabs__acc i::before,
+.utabs.is-acc .utabs__acc i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  margin: -1px 0 0 -6px;
+  border-radius: 2px;
+  background: var(--color-teal-600);
+  transition: transform var(--transition-base);
+}
+
+.utabs.is-acc .utabs__acc i::after {
+  transform: rotate(90deg);
+}
+
+.utabs.is-acc .utabs__acc[aria-expanded="true"] {
+  border-color: var(--color-navy-900);
+  background: var(--color-navy-900);
+  color: #fff;
+}
+
+.utabs.is-acc .utabs__acc[aria-expanded="true"] i::after {
+  transform: rotate(0deg);
+}
+
+.utabs.is-acc .utabs__panel {
+  margin-top: 0.5rem;
+}
+
+/* En la lista, primero la explicación y después la pantalla de ejemplo */
+.utabs.is-acc .res > div:not(.res__visual) {
+  order: -1;
+}
+
+.utabs.is-acc .res {
+  padding: 1.4rem 1.2rem;
+  gap: 1.2rem;
+}
+
+.utabs.is-acc .res h3 {
+  display: none;
+}
+
 /* --------------------------------------------------------------------------
    Rendimiento en celular
    -------------------------------------------------------------------------- */
