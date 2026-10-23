@@ -3109,17 +3109,29 @@ html.cookies-lock body {
 /* Escáner */
 .sc-scan {
   display: grid;
-  justify-items: center;
-  gap: 1rem;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.sc-scan__dev {
+  display: grid;
+  gap: 0.6rem;
+}
+
+/* Cama del escáner con la hoja que pasa bajo el haz */
+.sc-scan__bed {
+  padding: 0.55rem;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #1b2a4f, #0a1430);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .sc-scan__sheet {
   position: relative;
-  width: 150px;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  padding: 0.8rem 0.7rem;
+  border-radius: 5px;
+  background: #fff;
   overflow: hidden;
 }
 
@@ -3140,29 +3152,117 @@ html.cookies-lock body {
   }
 }
 
-.sc-scan__label {
+/* Páginas ya capturadas */
+.sc-scan__pages {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.9rem;
-  border-radius: 10px;
-  border: 1.5px dashed var(--color-navy-900);
-  font-size: 0.8rem;
+  gap: 0.4rem;
 }
 
-.sc-scan__label svg {
-  width: 24px;
-  height: 24px;
+.sc-scan__pages span {
+  flex: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  padding: 0.4rem 0.2rem;
+  border-radius: 7px;
+  border: 1px solid var(--color-border);
+  background: var(--color-off-white);
+}
+
+.sc-scan__pages svg {
+  width: 16px;
+  height: 16px;
   color: var(--color-teal-600);
 }
 
-.sc-scan__label b,
-.sc-scan__label small {
-  display: block;
+.sc-scan__pages small {
+  font-size: 0.62rem;
+  color: var(--color-ink-soft);
 }
 
-.sc-scan__label small {
+/* Rótulo generado: código de barras y datos de radicación */
+.sc-scan__label {
+  padding: 0.7rem 0.8rem;
+  border-radius: 10px;
+  border: 1.5px dashed var(--color-navy-900);
+  font-size: 0.75rem;
+}
+
+.sc-scan__lhead {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sc-scan__lhead svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-teal-600);
+}
+
+.sc-scan__lhead .sc-pill {
+  margin-left: auto;
+}
+
+.sc-scan__code {
+  display: block;
+  width: 100%;
+  height: 26px;
+  margin: 0.55rem 0 0.45rem;
+  fill: var(--color-navy-900);
+}
+
+.sc-scan__label dl {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+}
+
+.sc-scan__label dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sc-scan__label dt {
   color: var(--color-ink-soft);
+}
+
+.sc-scan__label dd {
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Recorrido del documento */
+.sc-scan__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+
+.sc-scan__steps span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.2rem;
+  border-radius: 999px;
+  background: rgba(0, 162, 133, 0.1);
+  color: var(--color-teal-600);
+  font-size: 0.66rem;
+  font-weight: 600;
+}
+
+.sc-scan__steps i {
+  display: grid;
+  width: 13px;
+  height: 13px;
+}
+
+.sc-scan__steps svg {
+  width: 13px;
+  height: 13px;
 }
 
 /* Kanban */

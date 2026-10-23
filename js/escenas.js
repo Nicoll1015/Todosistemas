@@ -30,6 +30,13 @@
   const win = (title, body, cls = "") => `<div class="sc__win ${cls}">${bar(title)}<div class="sc__body">${body}</div></div>`;
   const sk = (w) => `<span class="sc-sk" style="width:${w}%"></span>`;
   const a = (i) => `style="--i:${i}"`;
+  // Código de barras del rótulo: barras de ancho variable, separadas por espacios
+  const BARS = [2, 1, 1, 1, 3, 1, 1, 2, 2, 1, 1, 1, 3, 2, 1, 1, 2, 1, 1, 3, 1, 1, 2, 2, 1, 1, 3, 1, 1, 2, 2, 1, 1, 1, 3, 1, 2, 1, 1, 2]
+    .reduce((acc, w, i) => {
+      if (i % 2 === 0) acc.svg += `<rect x="${acc.x.toFixed(1)}" width="${w * 0.9}" height="30"/>`;
+      acc.x += w * 0.9 + (i % 2 ? 0.5 : 0);
+      return acc;
+    }, { x: 2, svg: "" }).svg;
 
   /* ---------------------------------------------------------------- */
   /* Tipos de escena                                                  */
@@ -256,12 +263,26 @@
           .join("")}</div>`
       ),
 
-    // Escáner con hoja y rótulo
+    // Escáner con hoja y rótulo: escaneo, páginas capturadas, rótulo con código de barras y flujo
     scanner: (f) =>
       win(
         "Escáner",
-        `<div class="sc-scan"><div class="sc-scan__sheet">${sk(70)}${sk(85)}${sk(60)}${sk(75)}<i class="sc-scan__beam"></i></div>
-         <div class="sc-scan__label sc-a" ${a(2)}>${I.scan}<span><b>Rótulo</b><small>Generado automáticamente</small></span></div></div>`
+        `<div class="sc-scan">
+           <div class="sc-scan__dev">
+             <div class="sc-scan__bed"><div class="sc-scan__sheet">${sk(70)}${sk(85)}${sk(60)}${sk(75)}${sk(50)}<i class="sc-scan__beam"></i></div></div>
+             <div class="sc-scan__pages">${[1, 2, 3].map((n, i) => `<span class="sc-a" ${a(i + 1)}>${I.doc}<small>Pág. ${n}</small></span>`).join("")}</div>
+           </div>
+           <div class="sc-scan__label sc-a" ${a(2)}>
+             <div class="sc-scan__lhead">${I.scan}<b>Rótulo</b><em class="sc-pill sc-pill--ok">Automático</em></div>
+             <svg class="sc-scan__code" viewBox="0 0 69 30" preserveAspectRatio="none">${BARS}</svg>
+             <dl>${[["Radicado", "2026-E-0184"], ["Tipo documental", "Contrato"], ["Dependencia", "Jurídica"]]
+               .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`)
+               .join("")}</dl>
+           </div>
+         </div>
+         <div class="sc-scan__steps">${["Escanear", "Indexar", "Rotular", "Imprimir"]
+           .map((t, i) => `<span class="sc-a" ${a(i + 4)}><i>${I.check}</i>${t}</span>`)
+           .join("")}</div>`
       ),
 
     // Tablero tipo kanban
