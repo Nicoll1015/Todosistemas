@@ -80,6 +80,7 @@
     star: '<path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"/>',
     folder: '<path d="M3 6a2 2 0 012-2h4l2 2h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>',
     money: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/>',
+    smile: '<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9.5h.01M15 9.5h.01"/>',
     quality: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
     cart: '<path d="M3 4h2l2.4 10.2a2 2 0 002 1.8h7.6a2 2 0 002-1.6L20.5 8H6.2"/><circle cx="10" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>',
     leaf: '<path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"/><path d="M5 19l8-8"/>',
@@ -256,7 +257,7 @@
     nosotros: () =>
       `<div class="cx-photo cx-photo--main"><img src="${ROOT}assets/img/equipo/equipo-todosistemas.jpg" alt="" /></div><div class="cx-photo cx-photo--side"><img src="${ROOT}assets/img/equipo/contacto-equipo.jpg" alt="" /></div>
       <svg class="cx-stamp" viewBox="0 0 120 120"><defs><path id="cxst" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><text><textPath href="#cxst">TODOSISTEMAS STI · +22 AÑOS · TODOSISTEMAS STI · +22 AÑOS ·</textPath></text></svg><span class="cx-stamp__core">+22</span>` +
-      ["Humana", "Adaptable", "Ética"].map((t, i) => `<span class="cx-value" style="--d:${i};${["left:4%;bottom:14%", "left:30%;bottom:0", "right:34%;top:2%"][i]}">${ico(["users", "refresh", "shield"][i])}${t}</span>`).join(""),
+      ["Felicidad", "Humana", "Adaptable", "Ética"].map((t, i) => `<span class="cx-value" style="--d:${i};${["left:2%;top:-3%", "left:4%;bottom:14%", "left:30%;bottom:0", "right:34%;top:2%"][i]}">${ico(["smile", "users", "refresh", "shield"][i])}${t}</span>`).join(""),
 
     // 4 · Muro con los logos reales de clientes
     "casos-de-exito": () =>
