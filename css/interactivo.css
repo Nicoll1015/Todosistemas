@@ -4211,3 +4211,92 @@ html.cookies-lock body > *:not(.cookies):not(.cookies-veil) * {
     animation: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   PayUp: capturas del panel y línea de escalamiento
+   -------------------------------------------------------------------------- */
+.payup-shot {
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  box-shadow: 0 18px 40px -24px rgba(1, 9, 30, 0.45);
+}
+
+.payup-shot__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--color-navy-950);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--fs-small);
+}
+
+.payup-shot__bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.payup-shot__bar span { margin-left: 8px; }
+
+.payup-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.payup-shot figcaption {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+.payup-shot figcaption strong { color: var(--color-ink); display: block; }
+
+.payup-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+@media (max-width: 820px) {
+  .payup-gallery { grid-template-columns: 1fr; }
+}
+
+.payup-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+@media (max-width: 820px) {
+  .payup-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.payup-timeline li {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-green-500);
+}
+
+.payup-timeline li.is-call { border-top-color: var(--color-navy-800); }
+.payup-timeline li.is-end { border-top-color: #e0475b; }
+
+.payup-timeline b {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--color-navy-900);
+}
+
+.payup-timeline span { display: block; font-weight: 600; color: var(--color-ink); }
+.payup-timeline small { color: var(--color-ink-soft); }

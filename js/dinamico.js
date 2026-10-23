@@ -132,6 +132,12 @@
       ["Prueba técnica", "Entrevista", "Onboarding", "Seguimiento"].map((t, i) => `<span class="cx-orbit-chip" style="--d:${i}">${ico(["flask", "chat", "rocket", "chart"][i])}${t}</span>`).join("") +
       toast("clock", "8 días o menos", "Perfil contratado", "dv-toast--br"),
 
+    // 2 · Celular: el aviso de mora sale por WhatsApp y el agente de voz IA consigue la promesa de pago
+    "pay-up": () =>
+      phone(`<div class="ui-phone-top ui-phone-top--wa"><span class="ui-profile__av">${ico("money")}</span><b>PayUp · Cobranza</b><span class="ui-online">en línea</span></div><div class="ui-chat">${bubble("Andrés, su cuota de COP 208.333 lleva 7 días de mora.", "them", 0)}${bubble("¿Puedo pagar el viernes?", "me", 1)}${bubble("Promesa de pago registrada ✓", "them", 2)}</div>`, "dv--center") +
+      ["Recordatorio · día -3", "Aviso de mora · día 1", "Llamada IA · día 7"].map((t, i) => `<span class="cx-orbit-chip" style="--d:${i}">${ico(["bell", "chat", "headset"][i])}${t}</span>`).join("") +
+      toast("audit", "Promesa de pago", "Grabación y transcripción", "dv-toast--br"),
+
     // 2 · Celular: chat para agendar la demo
     contacto: () =>
       phone(`<div class="ui-phone-top ui-phone-top--wa"><span class="ui-profile__av">${ico("users")}</span><b>Todosistemas STI</b><span class="ui-online">en línea</span></div><div class="ui-chat">${bubble("Hola, quiero agendar una demo", "me", 0)}${bubble("¡Con gusto! ¿Qué proceso quieres digitalizar?", "them", 1)}${bubble("Gestión documental", "me", 2)}${bubble("Te agendamos el jueves a las 10:00 ✓", "them", 3)}</div>`, "dv--solo") +
@@ -301,7 +307,7 @@
     "gestion-documental": "DocuClick · Flujo documental", "auraquantic-bpms": "AuraQuantic · Proceso sin código", "automatizacion-bpm": "BPM · Proceso end-to-end",
     "blue-prism": "Blue Prism WorkHQ", "softexpert-suite": "SoftExpert Suite", enjisst: "ENJISST · Calidad de software", "fabrica-software": "Fábrica de software",
     "ia-agentica": "Desarrollo con IA Agéntica", "modernizacion-sistemas": "Modernización de sistemas", "gobernabilidad-datos": "Gobierno de datos · DAMA-DMBOK",
-    "soporte-ti": "Mesa de ayuda · Nivel 1 y 2", "outsourcing-ti": "Outsourcing de TI", "staffing-ti": "PeopleHEF · Selección", rrhh: "Gestión de RRHH",
+    "soporte-ti": "Mesa de ayuda · Nivel 1 y 2", "outsourcing-ti": "Outsourcing de TI", "staffing-ti": "PeopleHEF · Selección", rrhh: "Gestión de RRHH", "pay-up": "PayUp · Cobranza automatizada",
   };
 
   /* ------------------------------------------------------------------ */
