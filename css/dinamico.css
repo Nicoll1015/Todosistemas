@@ -723,7 +723,6 @@
 .dv-toast--br { right: -2%; bottom: 34%; animation-delay: -4s; }
 .dv-toast--bl { left: 2%; bottom: 2%; animation-delay: -5s; }
 .dv-scene:has(.dv--phone:not(.dv--solo)) .dv-toast--br { right: 22%; bottom: 2%; }
-.dv-scene--softexpert-suite .dv-toast--br,
 .dv-scene--fabrica-software .dv-toast--br { right: 0; bottom: 0; }
 .dv-scene--outsourcing-ti .dv-toast--br { right: 0; top: 2%; bottom: auto; }
 
@@ -1125,28 +1124,36 @@
   position: absolute;
   left: var(--x);
   top: var(--y);
-  width: 17cqw;
-  height: 18.6cqw;
-  display: grid;
-  place-items: center;
-  align-content: center;
+  width: 20.4cqw;
+  height: 23.6cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+  padding: 0 1.4cqw;
+  text-align: center;
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   background: linear-gradient(160deg, rgba(31, 79, 209, 0.55), rgba(10, 28, 77, 0.9));
   color: var(--color-green-400);
-  animation: cx-hex 6s ease-in-out infinite;
-  animation-delay: calc(var(--d) * 0.35s);
+  animation: cx-hex 8s ease-in-out infinite;
+  animation-delay: calc(var(--d) * 0.5s);
 }
 
-.cx-hex svg { width: 34%; height: 34%; }
+.cx-hex svg { width: 4cqw; height: 4cqw; flex: none; }
+.cx-hex b { font-size: 2.2cqw; letter-spacing: 0.06em; line-height: 1; }
+.cx-hex small { color: #fff; font-size: 1.95cqw; font-weight: 600; line-height: 1.15; animation: cx-hex-name 8s ease-in-out infinite; animation-delay: inherit; }
+
+
+@keyframes cx-hex-name {
+  0%, 9% { color: var(--color-navy-950); }
+  16%, 100% { color: #fff; }
+}
 
 @keyframes cx-hex {
-  0%, 12% { background: var(--gradient-brand); color: var(--color-navy-950); transform: scale(1.06); }
-  22%, 100% { background: linear-gradient(160deg, rgba(31, 79, 209, 0.55), rgba(10, 28, 77, 0.9)); color: var(--color-green-400); transform: none; }
+  0%, 9% { background: var(--gradient-brand); color: var(--color-navy-950); transform: scale(1.05); }
+  16%, 100% { background: linear-gradient(160deg, rgba(31, 79, 209, 0.55), rgba(10, 28, 77, 0.9)); color: var(--color-green-400); transform: none; }
 }
-
-.cx-hex--core { background: var(--gradient-brand); color: var(--color-navy-950); animation: none; filter: drop-shadow(0 0 20px rgba(3, 207, 136, 0.8)); }
-.cx-hex--core b { font-size: 2.2em; line-height: 1; }
-.cx-hex--core small { font-weight: 700; }
 
 /* --- ENJISST: escudo que detiene errores --- */
 .cx-shield { position: absolute; left: 22%; right: 12%; top: 6%; bottom: 6%; display: grid; place-items: center; }

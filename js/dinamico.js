@@ -80,6 +80,14 @@
     star: '<path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"/>',
     folder: '<path d="M3 6a2 2 0 012-2h4l2 2h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>',
     money: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/>',
+    quality: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+    cart: '<path d="M3 4h2l2.4 10.2a2 2 0 002 1.8h7.6a2 2 0 002-1.6L20.5 8H6.2"/><circle cx="10" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>',
+    leaf: '<path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"/><path d="M5 19l8-8"/>',
+    health: '<path d="M12 21s-8-4.8-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6.2-8 11-8 11z"/><path d="M12 9v6M9 12h6"/>',
+    building: '<rect x="3" y="3" width="11" height="18" rx="1"/><path d="M14 9h6a1 1 0 011 1v11H14M7 7h3M7 11h3M7 15h3"/>',
+    gauge: '<path d="M4 18a9 9 0 1116 0"/><path d="M12 14l4-5"/><circle cx="12" cy="14" r="1.5"/>',
+    laptop: '<rect x="4" y="4" width="16" height="11" rx="1.5"/><path d="M2 19h20"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/>',
   };
   const ico = (k) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[k] || I.form}</svg>`;
 
@@ -160,15 +168,19 @@
       <div class="cx-queue cx-queue--out"><b>Completado</b>${["Factura", "Orden", "Reclamo", "Pago", "Póliza"].map((t, i) => `<span style="--d:${i}">${ico("shield")}${t}</span>`).join("")}</div>` +
       toast("audit", "Gobernanza integrada", "Todo queda auditado", "dv-toast--bl"),
 
-    // 3 · Panal hexagonal: los 14 módulos de la suite alrededor del núcleo
+    // 3 · Panal hexagonal: los 16 componentes de la suite con su sigla y nombre
     "softexpert-suite": () =>
-      `<div class="cx-hive">${["folder", "calendar", "star", "map", "chart", "headset", "wrench", "SUITE", "refresh", "alert", "target", "users", "idea", "shield", "layers"].map((k, i) => {
-        // Panal de 3 filas × 5 celdas; la fila del medio va corrida media celda
-        const r = Math.floor(i / 5), c = i % 5;
-        const pos = `--x:${3 + c * 17.6 + (r === 1 ? 8.8 : 0) - (r === 1 ? 4.4 : 0)}cqw;--y:${17 + r * 14.6}cqw`;
-        return k === "SUITE" ? `<span class="cx-hex cx-hex--core" style="${pos}"><b>14</b><small>módulos</small></span>` : `<span class="cx-hex" style="${pos};--d:${i}">${ico(k)}</span>`;
-      }).join("")}</div>` +
-      toast("alert", "Gestión de riesgos", "Corporativos", "dv-toast--tl") + toast("audit", "Cumplimiento", "Normas internacionales", "dv-toast--br"),
+      `<div class="cx-hive">${[
+        ["map", "BPM", "Gestión de Procesos de Negocio"], ["quality", "QMS", "Gestión de la Calidad"], ["form", "ECM", "Gestión de Contenido"], ["audit", "GRC", "Gestión de GRC"],
+        ["cart", "SLM", "Gestión de Proveedores"], ["leaf", "ESG", "Gestión de ESG"], ["health", "EHSM", "Salud, Seguridad y Medio Ambiente"], ["alert", "ERM", "Gestión de Riesgos"],
+        ["building", "EAM", "Gestión de Activos"], ["queue", "PPM", "Proyectos y Portafolios"], ["refresh", "PLM", "Ciclo de Vida del Producto"], ["gauge", "CPM", "Gestión del Rendimiento"],
+        ["laptop", "ESM", "Gestión de Servicios"], ["idea", "ICM", "Gestión de Cambios e Innovación"], ["users", "HDM", "Desarrollo Humano"], ["briefcase", "CWM", "Gestión del Trabajo"],
+      ].map(([k, code, name], i) => {
+        // Panal de 4 filas × 4 celdas; las filas impares van corridas media celda
+        const r = Math.floor(i / 4), c = i % 4;
+        const pos = `--x:${1.5 + c * 21.6 + (r % 2 ? 10.8 : 0)}cqw;--y:${1.5 + r * 19.2}cqw`;
+        return `<span class="cx-hex" style="${pos};--d:${i}">${ico(k)}<b>${code}</b><small>${name}</small></span>`;
+      }).join("")}</div>`,
 
     // 3 · Seguridad y calidad: escudo que detiene los errores antes de producción
     enjisst: () =>
