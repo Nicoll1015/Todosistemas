@@ -149,9 +149,9 @@
         <circle cx="280" cy="150" r="11" class="cx-iso__end"/>
         <circle r="7" class="cx-iso__token"><animateMotion dur="5s" repeatCount="indefinite" path="M30 150 H120 H190 L250 95 L280 150"/></circle>
         <circle r="7" class="cx-iso__token cx-iso__token--b"><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" path="M30 150 H120 H190 L250 205 L280 150"/></circle>
-      </svg></div></div>` +
+      </svg>${toast("code", "Cero código", "Sin programar", "cx-iso__badge")}</div></div>` +
       glass(`${ico("usercheck")}<span><b>Aprobación</b><small>Arrástrala al flujo</small></span>`, "cx-drag") + cursor("cx-drag__cursor") +
-      toast("code", "Cero código", "Sin programar", "dv-toast--tl") + toast("chart", "-74% tiempos de proceso", "Control en tiempo real", "dv-toast--br"),
+      toast("chart", "-74% tiempos de proceso", "Control en tiempo real", "dv-toast--br"),
 
     // 3 · Automatización: los casos viajan por las etapas del proceso y alimentan los indicadores
     "automatizacion-bpm": () =>

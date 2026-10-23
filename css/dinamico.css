@@ -972,6 +972,8 @@
 }
 
 .cx-iso__plane svg { width: 100%; height: 100%; }
+/* "Cero código" acostado sobre el plano, como parte del diagrama */
+.cx-iso__badge { left: 7%; top: 8%; transform: translateZ(16px) scale(1.35); transform-origin: left top; animation: none; }
 .cx-iso__wire { stroke: rgba(3, 207, 136, 0.7); stroke-width: 3; stroke-dasharray: 8 6; animation: dyn-dash 1s linear infinite; }
 .cx-iso__start { fill: rgba(3, 207, 136, 0.25); stroke: var(--color-green-400); stroke-width: 3; }
 .cx-iso__end { fill: rgba(3, 207, 136, 0.25); stroke: var(--color-green-400); stroke-width: 6; }
