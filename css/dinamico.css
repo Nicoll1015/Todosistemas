@@ -2074,11 +2074,20 @@
   background: linear-gradient(165deg, rgba(20, 54, 128, 0.9), rgba(1, 9, 30, 0.95));
 }
 
-/* 7 tarjetas: 4 + 3 en escritorio, 2 por fila en pantallas medianas */
-#transformacion-digital .services__grid { --cols: 4; max-width: none; }
+/* 7 tarjetas: 3 arriba (centradas) + 4 abajo en escritorio, 2 por fila en pantallas medianas */
+#transformacion-digital .services__grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  max-width: none;
+}
+
+#transformacion-digital .services__grid > * { grid-column: span 2; }
+#transformacion-digital .services__grid > :first-child { grid-column: 2 / span 2; }
 
 @media (max-width: 1100px) {
-  #transformacion-digital .services__grid { --cols: 2; max-width: 976px; }
+  #transformacion-digital .services__grid { display: flex; --cols: 2; max-width: 976px; }
+  #transformacion-digital .services__grid > *,
+  #transformacion-digital .services__grid > :first-child { grid-column: auto; }
 }
 
 @media (max-width: 560px) {
