@@ -237,7 +237,7 @@
       win(
         p.title || "Registro de actividad",
         `<div class="sc-log">${(p.items || ["Creado", "Aprobado", "Modificado", "Consultado"])
-          .map((t, i) => `<div class="sc-log__it sc-a" ${a(i)}><i></i><b>${t}</b><small>${["Usuario: A. Rojas", "Usuario: M. Pérez", "Usuario: L. Gómez", "Usuario: C. Díaz"][i % 4]} · ${["08:15", "09:40", "11:02", "14:27"][i % 4]}</small></div>`)
+          .map((t, i) => `<div class="sc-log__it sc-a" ${a(i)}><i></i><b>${t}</b><small>${(p.meta || ["Usuario: A. Rojas", "Usuario: M. Pérez", "Usuario: L. Gómez", "Usuario: C. Díaz"])[i % 4]} · ${["08:15", "09:40", "11:02", "14:27"][i % 4]}</small></div>`)
           .join("")}</div>`
       ),
 
@@ -385,6 +385,11 @@
     "Control documental": ["template", { title: "Expediente digital", fields: ["Colaborador", "Contrato", "Documentos", "Estado"] }],
     "Reportes gerenciales": ["dashboard", { title: "Reporte a dirección", kpis: [["Colaboradores", "152"], ["Ingresos del mes", "9"], ["Expedientes al día", "148"]] }],
     "Trazabilidad total": ["log"],
+    // PayUp
+    "Motor de escalamiento": ["roadmap", { title: "Reglas de escalamiento", steps: ["Día -3 · Recordatorio", "Día 1 · Aviso de mora", "Día 7 · Llamada IA", "Día 90 · Castigo"] }],
+    "WhatsApp y agente de voz IA": ["ai", { title: "Gestión de cobro", conv: [["ai", "Andrés, su cuota AC-88213 lleva 7 días de mora."], ["me", "Sí, puedo pagar el viernes."], ["ai", "Listo, quedó registrada su promesa de pago."], ["chips", ["WhatsApp", "Llamada IA", "Promesa de pago"]]] }],
+    "Evidencia de cada gestión": ["log", { title: "Evidencia · AC-88213", items: ["Recordatorio entregado", "Aviso de mora leído", "Llamada grabada", "Promesa de pago"], meta: ["WhatsApp", "WhatsApp", "Agente de voz IA", "Transcripción"] }],
+    "Conexión con tu ERP": ["connect", { title: "Integraciones", systems: ["ERP", "n8n", "WhatsApp", "Voz IA"] }],
   };
 
   // Palabras clave para características que no estén en la lista
