@@ -2074,6 +2074,17 @@
   background: linear-gradient(165deg, rgba(20, 54, 128, 0.9), rgba(1, 9, 30, 0.95));
 }
 
+/* 7 tarjetas: 4 + 3 en escritorio, 2 por fila en pantallas medianas */
+#transformacion-digital .services__grid { --cols: 4; max-width: none; }
+
+@media (max-width: 1100px) {
+  #transformacion-digital .services__grid { --cols: 2; max-width: 976px; }
+}
+
+@media (max-width: 560px) {
+  #transformacion-digital .services__grid { --cols: 1; }
+}
+
 #transformacion-digital .service-card__media {
   margin: 10px 10px 0;
   border-radius: 12px;
