@@ -2856,7 +2856,11 @@ h2 {
   align-items: flex-start;
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, #ff6554 0%, #c84a45 45%, #00223f 100%);
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 0%, rgba(108, 99, 255, 0.35), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(255, 101, 84, 0.18), transparent 70%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1.5px) 0 0 / 28px 28px,
+    linear-gradient(160deg, #001629 0%, #00223f 55%, #0a2f52 100%);
   color: #fff;
   box-shadow: 0 24px 50px rgba(0, 34, 63, 0.25);
 }
@@ -2868,16 +2872,27 @@ h2 {
 }
 
 .rt-band__kicker {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: #ff6554;
   color: #fff;
-  opacity: 0.85;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
+/* Degradado de la marca RiskTech: violeta, coral y dorado */
+.rt-band__grad {
+  background: linear-gradient(90deg, #8f88ff 0%, #ff8577 55%, #f5b841 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .rt-band h2 {
-  margin-top: 0.4rem;
+  margin-top: 0.9rem;
   color: #fff;
   font-size: clamp(1.6rem, 2.8vw, 2.4rem);
 }
@@ -2894,10 +2909,11 @@ h2 {
   margin-top: auto;
   padding: 0.85rem 1.5rem;
   border-radius: 999px;
-  background: #fff;
-  color: #00223f;
+  background: #ff6554;
+  color: #fff;
   font-weight: 600;
   text-decoration: none;
+  box-shadow: 0 12px 28px rgba(255, 101, 84, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -2906,7 +2922,7 @@ h2 {
 .rt-band__btn:hover,
 .rt-band__btn:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 32px rgba(255, 101, 84, 0.45);
 }
 
 .rt-band__list {
