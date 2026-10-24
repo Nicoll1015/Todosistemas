@@ -146,7 +146,7 @@
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* ------------------------------------------------------------------ */
-  /* Conteo animado para las cifras de .stat-row (+22 años, +5.000...)   */
+  /* Conteo animado para las cifras de .stat-row (+24 años, +5.000...)   */
   /* Si el texto no trae números (ej. "IQNET"), se deja tal cual.        */
   /* ------------------------------------------------------------------ */
   const countTargets = document.querySelectorAll(".stat-row__item strong");

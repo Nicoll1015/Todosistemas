@@ -262,7 +262,7 @@
     // 4 · Collage con fotos reales del equipo y sus valores
     nosotros: () =>
       `<div class="cx-photo cx-photo--main"><img src="${ROOT}assets/img/equipo/equipo-todosistemas.jpg" alt="" /></div><div class="cx-photo cx-photo--side"><img src="${ROOT}assets/img/equipo/contacto-equipo.jpg" alt="" /></div>
-      <svg class="cx-stamp" viewBox="0 0 120 120"><defs><path id="cxst" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><text><textPath href="#cxst">TODOSISTEMAS STI · +22 AÑOS · TODOSISTEMAS STI · +22 AÑOS ·</textPath></text></svg><span class="cx-stamp__core">+22</span>` +
+      <svg class="cx-stamp" viewBox="0 0 120 120"><defs><path id="cxst" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><text><textPath href="#cxst">TODOSISTEMAS STI · +24 AÑOS · TODOSISTEMAS STI · +24 AÑOS ·</textPath></text></svg><span class="cx-stamp__core">+24</span>` +
       ["Felicidad", "Humana", "Adaptable", "Ética"].map((t, i) => `<span class="cx-value" style="--d:${i};${["left:2%;top:-3%", "left:4%;bottom:14%", "left:30%;bottom:0", "right:34%;top:2%"][i]}">${ico(["smile", "users", "refresh", "shield"][i])}${t}</span>`).join(""),
 
     // 4 · Muro con los logos reales de clientes
@@ -574,7 +574,7 @@
   });
 
   /* ------------------------------------------------------------------ */
-  /* Conteo de la barra de cifras del hero (+22, +15, +5.000)          */
+  /* Conteo de la barra de cifras del hero (+24, +15, +5.000)          */
   /* Las de .stat-row ya las cuenta main.js; aquí solo se iluminan al   */
   /* terminar.                                                          */
   /* ------------------------------------------------------------------ */
