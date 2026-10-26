@@ -192,6 +192,8 @@
     const ft = document.createElement("div");
     ft.className = "ftabs";
     // Botón de demo: el mismo destino que "Comienza ahora" de la página
+    // (data-cta en la sección cambia el texto, p. ej. PayUp no ofrece demo)
+    const ctaText = featSection.dataset.cta || "Agenda una demo";
     const demoHref = document.querySelector(".header__cta-desktop")?.getAttribute("href") || "#";
     const arrow = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     const chev = '<svg class="ftabs__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -208,7 +210,7 @@
             <h3>${d.title}</h3>
             <p>${d.desc}</p>
           </div>
-          <a class="btn btn--primary ftabs__cta" href="${demoHref}">Agenda una demo ${arrow}</a>
+          <a class="btn btn--primary ftabs__cta" href="${demoHref}">${ctaText} ${arrow}</a>
         </div>
         ${scenes[i]}
       </div>`
