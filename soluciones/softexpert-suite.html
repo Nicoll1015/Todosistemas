@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <script>if(matchMedia("(max-width: 820px), (hover: none)").matches)document.documentElement.classList.add("is-lite")</script>
-<link rel="stylesheet" href="../css/styles.css?v=3" />
+<link rel="stylesheet" href="../css/styles.css?v=4" />
 <link rel="stylesheet" href="../css/dinamico.css?v=19" />
 <link rel="stylesheet" href="../css/interactivo.css?v=54" />
 </head>
@@ -147,71 +147,89 @@
       <div class="section-head" data-reveal>
         <h2 id="componentes-title">16 Componentes, <span class="accent">una única solución</span></h2>
       </div>
-      <div class="module-grid">
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">BPM</span>
-          <h3>Gestión de Procesos de Negocio</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">QMS</span>
-          <h3>Gestión de la Calidad</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">ECM</span>
-          <h3>Gestión de Contenido</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">GRC</span>
-          <h3>Gestión de GRC</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">SLM</span>
-          <h3>Gestión de Proveedores</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">ESG</span>
-          <h3>Gestión de ESG</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">EHSM</span>
-          <h3>Salud, Seguridad y Medio Ambiente</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">ERM</span>
-          <h3>Gestión de Riesgos</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">EAM</span>
-          <h3>Gestión de Activos</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">PPM</span>
-          <h3>Proyectos y Portafolios</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">PLM</span>
-          <h3>Ciclo de Vida del Producto</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">CPM</span>
-          <h3>Gestión del Rendimiento</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">ESM</span>
-          <h3>Gestión de Servicios</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">ICM</span>
-          <h3>Gestión de Cambios e Innovación</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">HDM</span>
-          <h3>Desarrollo Humano</h3>
-        </article>
-        <article class="module-card" data-reveal>
-          <span class="module-card__code">CWM</span>
-          <h3>Gestión del Trabajo</h3>
-        </article>
+      <div class="setabs" data-tabs="manual" data-reveal>
+        <div class="setabs__list" role="tablist" aria-label="Componentes de SoftExpert Suite">
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-bpm" aria-controls="se-panel-bpm"><b>BPM</b>Gestión de Procesos de Negocio</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-qms" aria-controls="se-panel-qms"><b>QMS</b>Gestión de la Calidad</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-ecm" aria-controls="se-panel-ecm"><b>ECM</b>Gestión de Contenido</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-grc" aria-controls="se-panel-grc"><b>GRC</b>Gobernanza, Riesgos y Cumplimiento</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-slm" aria-controls="se-panel-slm"><b>SLM</b>Ciclo de Vida de los Proveedores</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-esg" aria-controls="se-panel-esg"><b>ESG</b>Ambiental, Social y de Gobernanza</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-ehsm" aria-controls="se-panel-ehsm"><b>EHSM</b>Salud, Seguridad y Medio Ambiente</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-erm" aria-controls="se-panel-erm"><b>ERM</b>Riesgos Corporativos</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-eam" aria-controls="se-panel-eam"><b>EAM</b>Activos Empresariales</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-ppm" aria-controls="se-panel-ppm"><b>PPM</b>Proyectos y Portafolios</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-plm" aria-controls="se-panel-plm"><b>PLM</b>Ciclo de Vida del Producto</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-cpm" aria-controls="se-panel-cpm"><b>CPM</b>Desempeño Corporativo</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-esm" aria-controls="se-panel-esm"><b>ESM</b>Gestión de Servicios Empresariales</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-icm" aria-controls="se-panel-icm"><b>ICM</b>Gestión de Cambios e Innovación</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-hdm" aria-controls="se-panel-hdm"><b>HDM</b>Desarrollo Humano</button>
+          <button class="setabs__tab" type="button" role="tab" id="se-tab-cwm" aria-controls="se-panel-cwm"><b>CWM</b>Gestión del Trabajo</button>
+        </div>
+        <div class="setabs__panel" id="se-panel-bpm" role="tabpanel" aria-labelledby="se-tab-bpm" hidden>
+          <img src="../assets/img/softexpert/bpm.svg" alt="Pantalla de SoftExpert BPM: Gestión de Procesos de Negocio" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">BPM</span><h3>Gestión de Procesos de Negocio</h3><p>Modela, automatiza y mejora tus procesos de negocio con notación BPMN, flujos de trabajo configurables e indicadores de desempeño, todo en una sola plataforma.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-qms" role="tabpanel" aria-labelledby="se-tab-qms" hidden>
+          <img src="../assets/img/softexpert/qms.svg" alt="Pantalla de SoftExpert QMS: Gestión de la Calidad" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">QMS</span><h3>Gestión de la Calidad</h3><p>Moderniza tu sistema de gestión de calidad con SoftExpert, garantiza el cumplimiento y promueve la mejora continua.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-ecm" role="tabpanel" aria-labelledby="se-tab-ecm" hidden>
+          <img src="../assets/img/softexpert/ecm.svg" alt="Pantalla de SoftExpert ECM: Gestión de Contenido" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">ECM</span><h3>Gestión de Contenido</h3><p>Crea, captura, gestiona, almacena, preserva y comparte documentos y registros, reduciendo el papeleo y las desviaciones. Garantiza seguridad, integridad, confiabilidad y cumplimiento con estándares como ISO 9001 y FDA 21 CFR Parte 11.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-grc" role="tabpanel" aria-labelledby="se-tab-grc" hidden>
+          <img src="../assets/img/softexpert/grc.svg" alt="Pantalla de SoftExpert GRC: Gobernanza, Riesgos y Cumplimiento" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">GRC</span><h3>Gobernanza, Riesgos y Cumplimiento</h3><p>Garantiza el cumplimiento de las políticas corporativas, leyes y reglamentos externos con una plataforma que integra la ejecución de la estrategia de negocio con las prácticas de gestión de riesgos.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-slm" role="tabpanel" aria-labelledby="se-tab-slm" hidden>
+          <img src="../assets/img/softexpert/slm.svg" alt="Pantalla de SoftExpert SLM: Ciclo de Vida de los Proveedores" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">SLM</span><h3>Ciclo de Vida de los Proveedores</h3><p>Mejora el control y la evaluación de tus proveedores, desde su identificación y calificación inicial hasta el monitoreo de desempeño y la racionalización de la base, con una interfaz intuitiva y fácil de usar.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-esg" role="tabpanel" aria-labelledby="se-tab-esg" hidden>
+          <img src="../assets/img/softexpert/esg.svg" alt="Pantalla de SoftExpert ESG: Ambiental, Social y de Gobernanza" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">ESG</span><h3>Ambiental, Social y de Gobernanza</h3><p>Estructura los procesos y las políticas para gestionar y hacer un seguimiento eficaz de todas las iniciativas e indicadores ESG de tu organización, en una plataforma integrada.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-ehsm" role="tabpanel" aria-labelledby="se-tab-ehsm" hidden>
+          <img src="../assets/img/softexpert/ehsm.svg" alt="Pantalla de SoftExpert EHSM: Salud, Seguridad y Medio Ambiente" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">EHSM</span><h3>Salud, Seguridad y Medio Ambiente</h3><p>Evita incidentes, reduce costos y garantiza el cumplimiento con un software que integra todos los procesos relacionados con la salud, la seguridad y el medio ambiente.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-erm" role="tabpanel" aria-labelledby="se-tab-erm" hidden>
+          <img src="../assets/img/softexpert/erm.svg" alt="Pantalla de SoftExpert ERM: Riesgos Corporativos" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">ERM</span><h3>Riesgos Corporativos</h3><p>Reduce la probabilidad y la gravedad de los eventos de riesgo en una plataforma integrada que te permite aprovechar oportunidades, optimizar recursos y orientar estrategias y decisiones.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-eam" role="tabpanel" aria-labelledby="se-tab-eam" hidden>
+          <img src="../assets/img/softexpert/eam.svg" alt="Pantalla de SoftExpert EAM: Activos Empresariales" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">EAM</span><h3>Activos Empresariales</h3><p>Moderniza tu gestión de activos con planes completos de calibración y mantenimiento que prolongan el ciclo de vida de los equipos, mejoran su confiabilidad y aseguran el cumplimiento de normas como ISO 50001, ISO 55000, ISO 55001 e ISO 17025.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-ppm" role="tabpanel" aria-labelledby="se-tab-ppm" hidden>
+          <img src="../assets/img/softexpert/ppm.svg" alt="Pantalla de SoftExpert PPM: Proyectos y Portafolios" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">PPM</span><h3>Proyectos y Portafolios</h3><p>Moderniza y simplifica la gestión de proyectos y portafolios con lo esencial para planificar, ejecutar y supervisar tus proyectos hasta su finalización exitosa, de acuerdo con las pautas del PMBOK.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-plm" role="tabpanel" aria-labelledby="se-tab-plm" hidden>
+          <img src="../assets/img/softexpert/plm.svg" alt="Pantalla de SoftExpert PLM: Ciclo de Vida del Producto" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">PLM</span><h3>Ciclo de Vida del Producto</h3><p>Gestiona el ciclo de vida de tus productos de forma eficaz y rentable en todas sus etapas: concepción, diseño, fabricación, servicios, entrega y seguimiento, en una solución web accesible y fácil de usar.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-cpm" role="tabpanel" aria-labelledby="se-tab-cpm" hidden>
+          <img src="../assets/img/softexpert/cpm.svg" alt="Pantalla de SoftExpert CPM: Desempeño Corporativo" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">CPM</span><h3>Desempeño Corporativo</h3><p>Administra la estrategia mapeando scorecards con objetivos, indicadores, planes de acción y todo lo que necesitas para alcanzar el éxito de tu negocio.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-esm" role="tabpanel" aria-labelledby="se-tab-esm" hidden>
+          <img src="../assets/img/softexpert/esm.svg" alt="Pantalla de SoftExpert ESM: Gestión de Servicios Empresariales" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">ESM</span><h3>Gestión de Servicios Empresariales</h3><p>Integra en una única plataforma los procesos de servicio, llamados de TI, gestión de incidentes y problemas, acuerdos de nivel de servicio (SLA), base de conocimiento, gestión de configuración (CMDB) y gestión de cambios.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-icm" role="tabpanel" aria-labelledby="se-tab-icm" hidden>
+          <img src="../assets/img/softexpert/icm.svg" alt="Pantalla de SoftExpert ICM: Gestión de Cambios e Innovación" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">ICM</span><h3>Gestión de Cambios e Innovación</h3><p>Gestiona tus procesos de cambio, transforma las ideas en resultados e impulsa la innovación y el cambio organizacional en tu empresa con una plataforma completa.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-hdm" role="tabpanel" aria-labelledby="se-tab-hdm" hidden>
+          <img src="../assets/img/softexpert/hdm.svg" alt="Pantalla de SoftExpert HDM: Desarrollo Humano" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">HDM</span><h3>Desarrollo Humano</h3><p>Atiende la gestión del talento, la capacitación y el desarrollo, la evaluación del desempeño de los equipos y la planificación de carrera y sucesión, en una única plataforma.</p></div>
+        </div>
+        <div class="setabs__panel" id="se-panel-cwm" role="tabpanel" aria-labelledby="se-tab-cwm" hidden>
+          <img src="../assets/img/softexpert/cwm.svg" alt="Pantalla de SoftExpert CWM: Gestión del Trabajo" width="683" height="384" loading="lazy" decoding="async" />
+          <div><span class="module-card__code">CWM</span><h3>Gestión del Trabajo</h3><p>Una plataforma en la nube, todo en uno, para mejorar la colaboración de los equipos y aumentar la eficacia de las tareas.</p></div>
+        </div>
       </div>
     </div>
   </section>
