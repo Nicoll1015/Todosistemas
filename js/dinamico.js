@@ -173,7 +173,7 @@
         <div class="cx-robot"><span class="cx-robot__antenna"></span><span class="cx-robot__eye"></span><span class="cx-robot__eye"></span></div>
         ${node("ai", "Agente IA", "cx-trio__ai")}${node("user", "Persona", "cx-trio__human")}<span class="cx-trio__label">WorkHQ</span></div>
       <div class="cx-queue cx-queue--out"><b>Completado</b>${["Factura", "Orden", "Reclamo", "Pago", "Póliza"].map((t, i) => `<span style="--d:${i}">${ico("shield")}${t}</span>`).join("")}</div>` +
-      toast("audit", "Gobernanza integrada", "Todo queda auditado", "dv-toast--bl"),
+      toast("audit", "Gobernanza de la IA", "SS&C AI Gateway · Todo auditado", "dv-toast--bl"),
 
     // 3 · Panal hexagonal: los 16 componentes de la suite con su sigla y nombre
     "softexpert-suite": () =>
@@ -305,7 +305,7 @@
   // Título de los recuadros azules "01 · 02 · 03" de cada página
   const PANEL_TITLES = {
     "gestion-documental": "DocuClick · Flujo documental", "auraquantic-bpms": "AuraQuantic · Proceso sin código", "automatizacion-bpm": "BPM · Proceso end-to-end",
-    "blue-prism": "Blue Prism WorkHQ", "softexpert-suite": "SoftExpert Suite", enjisst: "ENJISST · Calidad de software", "fabrica-software": "Fábrica de software",
+    "blue-prism": "SS&C Blue Prism WorkHQ", "softexpert-suite": "SoftExpert Suite", enjisst: "ENJISST · Calidad de software", "fabrica-software": "Fábrica de software",
     "ia-agentica": "Desarrollo con IA Agéntica", "modernizacion-sistemas": "Modernización de sistemas", "gobernabilidad-datos": "Gobierno de datos · DAMA-DMBOK",
     "soporte-ti": "Mesa de ayuda · Nivel 1 y 2", "outsourcing-ti": "Outsourcing de TI", "staffing-ti": "PeopleHEF · Selección", rrhh: "Gestión de RRHH", "pay-up": "PayUp · Cobranza automatizada",
   };

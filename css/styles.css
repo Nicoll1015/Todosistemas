@@ -1636,6 +1636,11 @@ h2 {
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
+/* Las tarjetas claras dentro de la sección oscura no heredan el texto blanco */
+.testimonials .value-card {
+  color: var(--color-ink);
+}
+
 /* Si va pegada a un hero oscuro no debe redondear arriba: se vería la costura. */
 .placeholder-hero + .testimonials {
   border-radius: 0;
