@@ -2298,16 +2298,32 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--tl-cols, 9), minmax(0, 1fr));
   grid-template-rows: var(--tl-card-h) 90px var(--tl-card-h);
   position: relative;
+}
+
+/* Segundo tramo (2015 en adelante): 7 años y sigue la alternancia de color */
+.timeline--cont {
+  --tl-cols: 7;
+  margin-top: 2.5rem;
+}
+
+.timeline--cont .timeline__item {
+  --tl-color: var(--tl-green);
+  --tl-glow: var(--tl-green-glow);
+}
+
+.timeline--cont .timeline__item:nth-child(even) {
+  --tl-color: var(--tl-blue);
+  --tl-glow: var(--tl-blue-glow);
 }
 
 /* Línea base + línea de progreso que se dibuja */
 .timeline__axis {
   position: absolute;
-  left: calc(100% / 18);
-  right: calc(100% / 18);
+  left: calc(100% / (2 * var(--tl-cols, 9)));
+  right: calc(100% / (2 * var(--tl-cols, 9)));
   top: calc(var(--tl-card-h) + 45px);
   height: 4px;
   margin-top: -2px;
