@@ -632,8 +632,66 @@
   document.querySelectorAll("[data-timeline]").forEach((timeline) => {
     const items = [...timeline.querySelectorAll(".timeline__item")];
     const axis = timeline.querySelector(".timeline__axis");
-    const STEP = 1100; // tiempo entre un año y el siguiente
+    const viewport = timeline.querySelector(".timeline__viewport");
+    const prev = timeline.querySelector("[data-tl-prev]");
+    const next = timeline.querySelector("[data-tl-next]");
+    const STEP = 900; // tiempo entre un año y el siguiente
     const TRAVEL = 750; // lo que tarda la línea en llegar al punto
+    let userMoved = false; // si la persona mueve el carrusel, deja de seguir la luz
+
+    // Carrusel: flechas, arrastre con el mouse y estado de las flechas
+    const updateNav = () => {
+      if (!viewport) return;
+      const max = viewport.scrollWidth - viewport.clientWidth - 2;
+      if (prev) prev.disabled = viewport.scrollLeft <= 2;
+      if (next) next.disabled = viewport.scrollLeft >= max;
+      timeline.style.setProperty("--tl-bar-w", (100 * viewport.clientWidth) / viewport.scrollWidth + "%");
+      timeline.style.setProperty("--tl-bar-x", (100 * viewport.scrollLeft) / viewport.scrollWidth + "%");
+    };
+    const page = (dir) => {
+      userMoved = true;
+      viewport.scrollBy({ left: dir * viewport.clientWidth * 0.75, behavior: reduceMotion ? "auto" : "smooth" });
+    };
+    if (viewport) {
+      prev?.addEventListener("click", () => page(-1));
+      next?.addEventListener("click", () => page(1));
+      viewport.addEventListener("scroll", updateNav, { passive: true });
+      window.addEventListener("resize", updateNav);
+      viewport.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") { e.preventDefault(); page(1); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); page(-1); }
+      });
+      ["wheel", "touchstart"].forEach((ev) => viewport.addEventListener(ev, () => (userMoved = true), { passive: true }));
+      let dragX = null;
+      let dragLeft = 0;
+      viewport.addEventListener("pointerdown", (e) => {
+        if (e.pointerType !== "mouse" || e.button !== 0) return;
+        dragX = e.clientX;
+        dragLeft = viewport.scrollLeft;
+      });
+      window.addEventListener("pointermove", (e) => {
+        if (dragX === null) return;
+        const dx = e.clientX - dragX;
+        if (Math.abs(dx) > 4) {
+          userMoved = true;
+          viewport.classList.add("is-dragging");
+        }
+        viewport.scrollLeft = dragLeft - dx;
+      });
+      window.addEventListener("pointerup", () => {
+        dragX = null;
+        viewport.classList.remove("is-dragging");
+      });
+      updateNav();
+    }
+
+    // Lleva el año que se enciende al centro del carrusel
+    const follow = (item) => {
+      if (!viewport || userMoved) return;
+      const v = viewport.getBoundingClientRect();
+      const d = item.querySelector(".timeline__dot").getBoundingClientRect();
+      viewport.scrollBy({ left: d.left + d.width / 2 - (v.left + v.width / 2), behavior: "smooth" });
+    };
 
     // Qué fracción de la línea hay que llenar para llegar al punto del año
     const progressTo = (item) => {
@@ -661,6 +719,7 @@
       items.forEach((item, i) => {
         setTimeout(() => {
           timeline.style.setProperty("--tl-progress", String(progressTo(item)));
+          follow(item);
           setTimeout(() => turnOn(item), i === 0 ? 0 : TRAVEL);
         }, 500 + i * STEP);
       });
